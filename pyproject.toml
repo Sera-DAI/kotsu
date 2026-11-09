@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kotsu-cli"
+version = "0.0.1"
+description = "Finanças pessoais no terminal: receitas, despesas e parcelas do mês numa tela só."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["textual>=8.0,<9"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.24", "ruff>=0.6"]
+
+[project.scripts]
+kotsu = "money_cli.__main__:main"
+money = "money_cli.__main__:main"  # apelido antigo
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/money_cli"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+markers = ["lento: fica fora do verificador --rapido"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "ferramentas"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
