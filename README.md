@@ -80,7 +80,7 @@ Windows Terminal (PowerShell):
 ```powershell
 py -m pip install --user pipx
 py -m pipx ensurepath
-py -m pipx install git+https://github.com/Sera-DAI/kotsu-cli-project.git
+py -m pipx install git+https://github.com/Sera-DAI/kotsu.git
 ```
 
 Linux (Debian/Ubuntu):
@@ -88,7 +88,7 @@ Linux (Debian/Ubuntu):
 ```bash
 sudo apt install pipx
 pipx ensurepath
-pipx install git+https://github.com/Sera-DAI/kotsu-cli-project.git
+pipx install git+https://github.com/Sera-DAI/kotsu.git
 ```
 
 Reabra o terminal e rode `kotsu`. Para atualizar: `pipx upgrade kotsu-cli`. Para remover: `pipx uninstall kotsu-cli` (seus dados continuam na pasta de dados).
@@ -187,8 +187,8 @@ Regras completas para quem contribui: [AGENTS.md](AGENTS.md).
 </table>
 
 ```bash
-git clone https://github.com/Sera-DAI/kotsu-cli-project.git
-cd kotsu-cli-project
+git clone https://github.com/Sera-DAI/kotsu.git
+cd kotsu
 python -m venv .venv
 # Windows: .venv\Scripts\activate    Linux: source .venv/bin/activate
 pip install -e ".[dev]"
