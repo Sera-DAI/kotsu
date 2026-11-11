@@ -75,6 +75,20 @@ Roda no Windows Terminal e no Linux, funciona sem internet e guarda tudo num arq
   </tr>
 </table>
 
+Windows Terminal (PowerShell), em uma linha:
+
+```powershell
+irm https://raw.githubusercontent.com/Sera-DAI/kotsu/main/instalar.ps1 | iex
+```
+
+Linux/macOS (precisa do pipx; o script avisa se faltar):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Sera-DAI/kotsu/main/instalar.sh | bash
+```
+
+Ou, passo a passo, sem script:
+
 Windows Terminal (PowerShell):
 
 ```powershell
@@ -91,7 +105,7 @@ pipx ensurepath
 pipx install git+https://github.com/Sera-DAI/kotsu.git
 ```
 
-Reabra o terminal e rode `kotsu`. Para atualizar: `pipx upgrade kotsu-cli`. Para remover: `pipx uninstall kotsu-cli` (seus dados continuam na pasta de dados).
+Reabra o terminal e rode `kotsu`. Para atualizar: `pipx upgrade kotsu-cli` (ou rode o instalador de novo). Para remover: `pipx uninstall kotsu-cli` (seus dados continuam na pasta de dados).
 
 ## III. Usar
 
