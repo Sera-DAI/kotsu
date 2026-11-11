@@ -77,6 +77,20 @@ It runs on Windows Terminal and Linux, works offline and keeps everything in a S
   </tr>
 </table>
 
+Windows Terminal (PowerShell), in one line:
+
+```powershell
+irm https://raw.githubusercontent.com/Sera-DAI/kotsu/main/instalar.ps1 | iex
+```
+
+Linux/macOS (needs pipx; the script tells you if it is missing):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Sera-DAI/kotsu/main/instalar.sh | bash
+```
+
+Or step by step, without a script:
+
 Windows Terminal (PowerShell):
 
 ```powershell
@@ -93,7 +107,7 @@ pipx ensurepath
 pipx install git+https://github.com/Sera-DAI/kotsu.git
 ```
 
-Reopen the terminal and run `kotsu`. To update: `pipx upgrade kotsu-cli`. To remove: `pipx uninstall kotsu-cli` (your data stays in the data folder).
+Reopen the terminal and run `kotsu`. To update: `pipx upgrade kotsu-cli` (or run the installer again). To remove: `pipx uninstall kotsu-cli` (your data stays in the data folder).
 
 ## III. Use
 
