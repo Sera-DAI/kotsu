@@ -4,11 +4,27 @@ build-backend = "hatchling.build"
 
 [project]
 name = "kotsu-cli"
-version = "0.0.1"
-description = "Finanças pessoais no terminal: receitas, despesas e parcelas do mês numa tela só."
+version = "0.1.0"
+description = "Cozy personal finance in your terminal: income, expenses and installments of the month on one screen."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = ["textual>=8.0,<9"]
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Sera-DAI" }]
+keywords = ["finance", "budget", "tui", "terminal", "textual"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Office/Business :: Financial",
+]
+
+[project.urls]
+Homepage = "https://github.com/Sera-DAI/kotsu"
+Issues = "https://github.com/Sera-DAI/kotsu/issues"
+"Português" = "https://github.com/Sera-DAI/kotsu/blob/main/README.pt-BR.md"
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "pytest-asyncio>=0.24", "ruff>=0.6"]

@@ -94,7 +94,7 @@ Windows Terminal (PowerShell):
 ```powershell
 py -m pip install --user pipx
 py -m pipx ensurepath
-py -m pipx install git+https://github.com/Sera-DAI/kotsu.git
+py -m pipx install kotsu-cli
 ```
 
 Linux (Debian/Ubuntu):
@@ -102,7 +102,7 @@ Linux (Debian/Ubuntu):
 ```bash
 sudo apt install pipx
 pipx ensurepath
-pipx install git+https://github.com/Sera-DAI/kotsu.git
+pipx install kotsu-cli
 ```
 
 Reabra o terminal e rode `kotsu`. Para atualizar: `pipx upgrade kotsu-cli` (ou rode o instalador de novo). Para remover: `pipx uninstall kotsu-cli` (seus dados continuam na pasta de dados).

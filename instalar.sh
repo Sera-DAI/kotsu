@@ -5,7 +5,7 @@
 # Para atualizar, rode de novo.
 set -euo pipefail
 
-REPO='git+https://github.com/Sera-DAI/kotsu.git'
+REPO='kotsu-cli'
 
 py=''
 for c in python3 python; do

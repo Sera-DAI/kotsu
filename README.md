@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="docs/imagens/banner.en.svg" alt="Kotsu: cozy personal finance in your terminal" width="100%">
+  <img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/banner.en.svg" alt="Kotsu: cozy personal finance in your terminal" width="100%">
 </p>
 
-<p align="center"><b>English</b> · <a href="README.pt-BR.md">Português (Brasil)</a></p>
+<p align="center"><b>English</b> · <a href="https://github.com/Sera-DAI/kotsu/blob/main/README.pt-BR.md">Português (Brasil)</a></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/python-3.11%2B-ff7fb8?style=flat-square&labelColor=1d1424&logo=python&logoColor=ffe9f4" alt="Python 3.11+">
@@ -12,14 +12,14 @@
 </p>
 
 <p align="center">
-  <img src="docs/imagens/stack/python.svg" width="44" alt="Python" title="Python">
-  <img src="docs/imagens/stack/githubactions.svg" width="44" alt="GitHub Actions" title="GitHub Actions">
-  <img src="docs/imagens/stack/claude.svg" width="44" alt="Claude" title="Claude">
+  <img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/stack/python.svg" width="44" alt="Python" title="Python">
+  <img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/stack/githubactions.svg" width="44" alt="GitHub Actions" title="GitHub Actions">
+  <img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/stack/claude.svg" width="44" alt="Claude" title="Claude">
 </p>
 
 <p align="center"><sub>Built with Python, Textual, SQLite and Claude</sub></p>
 
-<p align="center"><img src="docs/imagens/divisor.svg" width="420" alt=""></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/divisor.svg" width="420" alt=""></p>
 
 # Kotsu
 
@@ -43,27 +43,27 @@ It runs on Windows Terminal and Linux, works offline and keeps everything in a S
 
 <table>
   <tr>
-    <td width="72" align="center"><img src="docs/imagens/icones/lancar.svg" width="44" alt=""></td>
+    <td width="72" align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/lancar.svg" width="44" alt=""></td>
     <td><b>Quick line</b><br><code>89,90 mercado #alimentação @nubank</code> and Enter. No forms: the amount comes first, then account, category and date in any order.</td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/imagens/icones/parcelas.svg" width="44" alt=""></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/parcelas.svg" width="44" alt=""></td>
     <td><b>One screen</b><br>Income, expenses and balance for the month, one line per account (each with its own color) and the list of entries. The ← / → arrows switch months.</td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/imagens/icones/todomes.svg" width="44" alt=""></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/todomes.svg" width="44" alt=""></td>
     <td><b>Installments and "every month"</b><br><code>120 geladeira @nubank 10x</code> becomes 10 installments, one per month. Categories marked "every month" (rent, internet, salary) show up on their own, with a <code>↻</code>.</td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/imagens/icones/temas.svg" width="44" alt=""></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/temas.svg" width="44" alt=""></td>
     <td><b>Two Cotton Candy themes</b><br>Night (default) and light, with hearts, a little face and "zzz… zerada" when an account is empty. The <code>t</code> key switches and your choice is saved.</td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/imagens/icones/teclado.svg" width="44" alt=""></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/teclado.svg" width="44" alt=""></td>
     <td><b>Keyboard first</b><br>Everything has a key, and the footer reminds you which. Filter by <code>@account</code> or <code>#category</code> with <code>/</code>.</td>
   </tr>
   <tr>
-    <td align="center"><img src="docs/imagens/icones/privado.svg" width="44" alt=""></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/privado.svg" width="44" alt=""></td>
     <td><b>Truly private</b><br>Your data stays on your computer. Kotsu never sends anything over the network.</td>
   </tr>
 </table>
@@ -72,7 +72,7 @@ It runs on Windows Terminal and Linux, works offline and keeps everything in a S
 
 <table>
   <tr>
-    <td width="72" align="center"><img src="docs/imagens/icones/instalar.svg" width="44" alt=""></td>
+    <td width="72" align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/instalar.svg" width="44" alt=""></td>
     <td>Requires Python 3.11 or newer and <a href="https://pipx.pypa.io/">pipx</a>. The package is not on PyPI yet: install straight from GitHub.</td>
   </tr>
 </table>
@@ -96,7 +96,7 @@ Windows Terminal (PowerShell):
 ```powershell
 py -m pip install --user pipx
 py -m pipx ensurepath
-py -m pipx install git+https://github.com/Sera-DAI/kotsu.git
+py -m pipx install kotsu-cli
 ```
 
 Linux (Debian/Ubuntu):
@@ -104,7 +104,7 @@ Linux (Debian/Ubuntu):
 ```bash
 sudo apt install pipx
 pipx ensurepath
-pipx install git+https://github.com/Sera-DAI/kotsu.git
+pipx install kotsu-cli
 ```
 
 Reopen the terminal and run `kotsu`. To update: `pipx upgrade kotsu-cli` (or run the installer again). To remove: `pipx uninstall kotsu-cli` (your data stays in the data folder).
@@ -158,7 +158,7 @@ When you create a category, Kotsu asks whether it repeats every month (or press 
 
 <table>
   <tr>
-    <td width="72" align="center"><img src="docs/imagens/icones/backup.svg" width="44" alt=""></td>
+    <td width="72" align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/backup.svg" width="44" alt=""></td>
     <td>
       <ul>
         <li><b>Where it lives:</b> <code>%APPDATA%\money-cli</code> on Windows and <code>~/.local/share/money-cli</code> on Linux (or the folder in the <code>MONEY_CLI_DADOS</code> variable). <code>kotsu --dados FOLDER</code> opens another folder.</li>
@@ -176,7 +176,7 @@ When you create a category, Kotsu asks whether it repeats every month (or press 
 
 <table>
   <tr>
-    <td width="72" align="center"><img src="docs/imagens/icones/estrutura.svg" width="44" alt=""></td>
+    <td width="72" align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/estrutura.svg" width="44" alt=""></td>
     <td>Three layers, and a test fails if one of them imports what it must not. Financial rules (totals, installments, the quick-line parser) live in the domain; the screen only displays.</td>
   </tr>
 </table>
@@ -200,7 +200,7 @@ Full contributor rules (in Portuguese): [AGENTS.md](AGENTS.md).
 
 <table>
   <tr>
-    <td width="72" align="center"><img src="docs/imagens/icones/dev.svg" width="44" alt=""></td>
+    <td width="72" align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/dev.svg" width="44" alt=""></td>
     <td>Requires Python 3.11+. The tests never touch the network.</td>
   </tr>
 </table>
@@ -220,9 +220,9 @@ python ferramentas/verificar.py              # everything, same as CI
 
 <table>
   <tr>
-    <td width="72" align="center"><img src="docs/imagens/icones/licenca.svg" width="44" alt=""></td>
-    <td><a href="LICENSE">MIT</a>. Made with care, little by little.</td>
+    <td width="72" align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/licenca.svg" width="44" alt=""></td>
+    <td><a href="https://github.com/Sera-DAI/kotsu/blob/main/LICENSE">MIT</a>. Made with care, little by little.</td>
   </tr>
 </table>
 
-<p align="center"><img src="docs/imagens/divisor.svg" width="420" alt=""></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/divisor.svg" width="420" alt=""></p>
