@@ -8,14 +8,16 @@ from __future__ import annotations
 
 import datetime as dt
 import sqlite3
+import time
 import uuid
-from collections.abc import Iterator, Sequence
+from collections.abc import Callable, Iterator, Sequence
 from contextlib import contextmanager
 from pathlib import Path
 
 from money_cli.armazenamento import migracoes
 from money_cli.dominio.filtro import SEM_FILTRO, Filtro
 from money_cli.dominio.mes import Mes
+from money_cli.dominio.mescla import carimbo, uid_do_mes
 from money_cli.dominio.recorrencia import data_no_mes, meses_a_gerar
 from money_cli.dominio.tipos import (
     Alcance,
@@ -47,6 +49,15 @@ def copiar_banco(origem: sqlite3.Connection, destino: Path) -> None:
         origem.backup(alvo)
     finally:
         alvo.close()
+
+
+def copiar_arquivo_banco(origem: Path, destino: Path) -> None:
+    """Copia um banco fechado para um caminho novo, de forma consistente."""
+    conexao = sqlite3.connect(origem)
+    try:
+        copiar_banco(conexao, destino)
+    finally:
+        conexao.close()
 
 
 def migrar(
@@ -97,12 +108,20 @@ def _comandos(sql: str) -> list[str]:
 
 
 class Banco:
-    def __init__(self, conexao: sqlite3.Connection, caminho: Path | None) -> None:
+    def __init__(
+        self,
+        conexao: sqlite3.Connection,
+        caminho: Path | None,
+        pasta_backups: Path | None = None,
+    ) -> None:
         self._conexao = conexao
         self.caminho = caminho
+        self.pasta_backups = pasta_backups  # None: `backups/` ao lado do banco
+        # Relógio de parede em milissegundos; os testes trocam por um relógio fixo.
+        self.agora_ms: Callable[[], int] = lambda: time.time_ns() // 1_000_000
 
     @classmethod
-    def abrir(cls, caminho: Path) -> Banco:
+    def abrir(cls, caminho: Path, pasta_backups: Path | None = None) -> Banco:
         caminho.parent.mkdir(parents=True, exist_ok=True)
         conexao = _conectar(caminho)
         try:
@@ -110,7 +129,7 @@ class Banco:
         except BaseException:
             conexao.close()
             raise
-        return cls(conexao, caminho)
+        return cls(conexao, caminho, pasta_backups)
 
     @classmethod
     def em_memoria(cls) -> Banco:
@@ -127,13 +146,38 @@ class Banco:
         if self.caminho is None:
             return None
         try:
-            return backup_manual(self._conexao, self.caminho, agora or dt.datetime.now())
+            return backup_manual(
+                self._conexao, self.caminho, agora or dt.datetime.now(), self.pasta_backups
+            )
         except sqlite3.Error:
             raise OSError("não foi possível copiar o banco SQLite") from None
 
     @property
     def versao(self) -> int:
         return versao_do_esquema(self._conexao)
+
+    @property
+    def conexao(self) -> sqlite3.Connection:
+        """Para leituras de outros módulos de `armazenamento`. Escrita: `transacao()`."""
+        return self._conexao
+
+    @property
+    def replica(self) -> str:
+        """Identificador deste banco entre aparelhos (D39); desempata carimbos."""
+        return self._meta("replica")
+
+    def _meta(self, chave: str) -> str:
+        return self._conexao.execute("SELECT valor FROM meta WHERE chave = ?", (chave,)).fetchone()[
+            0
+        ]
+
+    def carimbar(self, c: sqlite3.Connection, visto: str | None = None) -> str:
+        """Carimbo novo para as alterações desta transação (D39): sempre maior que os já
+        dados aqui e que `visto` (o maior carimbo de um arquivo mesclado)."""
+        ultimo = max(self._meta("relogio"), visto or "")
+        novo = carimbo(self.agora_ms(), ultimo, self.replica)
+        c.execute("UPDATE meta SET valor = ? WHERE chave = 'relogio'", (novo,))
+        return novo
 
     @contextmanager
     def transacao(self) -> Iterator[sqlite3.Connection]:
@@ -151,7 +195,10 @@ class Banco:
 
     def criar_conta(self, nome: str, cor: str) -> Conta:
         with self.transacao() as c:
-            cursor = c.execute("INSERT INTO conta (nome, cor) VALUES (?, ?)", (nome.strip(), cor))
+            cursor = c.execute(
+                "INSERT INTO conta (nome, cor, uid, alterado_em) VALUES (?, ?, ?, ?)",
+                (nome.strip(), cor, uuid.uuid4().hex, self.carimbar(c)),
+            )
         return Conta(cursor.lastrowid, nome.strip(), cor)
 
     def listar_contas(self) -> list[Conta]:
@@ -161,8 +208,8 @@ class Banco:
     def criar_categoria(self, nome: str, recorrente: bool = False) -> Categoria:
         with self.transacao() as c:
             cursor = c.execute(
-                "INSERT INTO categoria (nome, recorrente) VALUES (?, ?)",
-                (nome.strip(), int(recorrente)),
+                "INSERT INTO categoria (nome, recorrente, uid, alterado_em) VALUES (?, ?, ?, ?)",
+                (nome.strip(), int(recorrente), uuid.uuid4().hex, self.carimbar(c)),
             )
         return Categoria(cursor.lastrowid, nome.strip(), recorrente)
 
@@ -174,7 +221,8 @@ class Banco:
         """Marca ou desmarca a categoria (D36). Séries já em andamento não mudam."""
         with self.transacao() as c:
             c.execute(
-                "UPDATE categoria SET recorrente = ? WHERE id = ?", (int(recorrente), categoria_id)
+                "UPDATE categoria SET recorrente = ?, alterado_em = ? WHERE id = ?",
+                (int(recorrente), self.carimbar(c), categoria_id),
             )
 
     def conta_por_nome(self, nome: str) -> Conta | None:
@@ -196,11 +244,13 @@ class Banco:
         """Insere vários lançamentos (ex.: todas as parcelas) numa transação só."""
         ids = []
         with self.transacao() as c:
+            agora = self.carimbar(c)
             for n in novos:
                 if n.grupo_recorrencia:
                     c.execute(
                         "INSERT INTO recorrencia (grupo, dia, descricao, valor, tipo, conta_id,"
-                        " categoria_id, gerada_ate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                        " categoria_id, gerada_ate, alterado_em)"
+                        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                         (
                             n.grupo_recorrencia,
                             n.data.day,
@@ -210,9 +260,10 @@ class Banco:
                             n.conta_id,
                             n.categoria_id,
                             Mes.de(n.data).inicio.isoformat(),
+                            agora,
                         ),
                     )
-                ids.append(_inserir(c, n))
+                ids.append(_inserir(c, n, agora))
         return ids
 
     def tornar_recorrente(self, id_: int) -> bool:
@@ -223,9 +274,10 @@ class Banco:
             return False
         grupo = self.novo_grupo_parcela()
         with self.transacao() as c:
+            agora = self.carimbar(c)
             c.execute(
                 "INSERT INTO recorrencia (grupo, dia, descricao, valor, tipo, conta_id,"
-                " categoria_id, gerada_ate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                " categoria_id, gerada_ate, alterado_em) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 (
                     grupo,
                     item.data.day,
@@ -235,18 +287,25 @@ class Banco:
                     item.conta_id,
                     item.categoria_id,
                     Mes.de(item.data).inicio.isoformat(),
+                    agora,
                 ),
             )
-            c.execute("UPDATE lancamento SET grupo_recorrencia = ? WHERE id = ?", (grupo, id_))
+            c.execute(
+                "UPDATE lancamento SET grupo_recorrencia = ?, alterado_em = ? WHERE id = ?",
+                (grupo, agora, id_),
+            )
         return True
 
     def estender_recorrencias(self, ate: Mes) -> int:
         """Gera os meses que faltam das séries ativas, até `ate` (D36). Devolve quantos.
 
         Só avança: mês excluído com "só este" nunca volta, e série encerrada não gera.
+        O mês gerado tem `uid` fixo (série + mês) e o carimbo do modelo da série, para dois
+        aparelhos gerarem o mesmo registro e qualquer edição ou exclusão vencer (D39).
         """
         series = self._conexao.execute(
-            "SELECT grupo, dia, descricao, valor, tipo, conta_id, categoria_id, gerada_ate"
+            "SELECT grupo, dia, descricao, valor, tipo, conta_id, categoria_id, gerada_ate,"
+            " alterado_em"
             " FROM recorrencia WHERE encerrada = 0 AND gerada_ate < ?",
             (ate.inicio.isoformat(),),
         ).fetchall()
@@ -254,9 +313,16 @@ class Banco:
             return 0
         criados = 0
         with self.transacao() as c:
-            for grupo, dia, descricao, valor, tipo, conta_id, categoria_id, gerada in series:
+            for grupo, dia, descricao, valor, tipo, conta_id, categoria_id, gerada, em in series:
                 meses = meses_a_gerar(Mes.de(dt.date.fromisoformat(gerada)), ate)
                 for mes in meses:
+                    uid = uid_do_mes(grupo, mes.ano, mes.mes)
+                    if c.execute(
+                        "SELECT 1 FROM lancamento WHERE uid = ?1"
+                        " UNION ALL SELECT 1 FROM lapide WHERE uid = ?1",
+                        (uid,),
+                    ).fetchone():
+                        continue  # já veio de outro aparelho, ou foi excluído lá
                     _inserir(
                         c,
                         NovoLancamento(
@@ -268,6 +334,9 @@ class Banco:
                             categoria_id,
                             grupo_recorrencia=grupo,
                         ),
+                        em,
+                        uid=uid,
+                        gerado=True,
                     )
                     criados += 1
                 c.execute(
@@ -306,22 +375,32 @@ class Banco:
         """
         onde, parametros = self._alvo(id_, alcance)
         with self.transacao() as c:
+            agora = self.carimbar(c)
             if alcance is Alcance.PROXIMAS:  # encerra a série; meses passados ficam (D36)
-                c.execute("UPDATE recorrencia SET encerrada = 1 WHERE grupo = ?", (parametros[0],))
+                c.execute(
+                    "UPDATE recorrencia SET encerrada = 1, alterado_em = ? WHERE grupo = ?",
+                    (agora, parametros[0]),
+                )
+            c.execute(  # lápide: o excluído não volta ao mesclar com outro aparelho (D39)
+                "INSERT OR REPLACE INTO lapide (uid, excluido_em)"
+                f" SELECT uid, ? FROM lancamento WHERE {onde}",
+                (agora, *parametros),
+            )
             return c.execute(f"DELETE FROM lancamento WHERE {onde}", parametros).rowcount
 
     def renomear(self, id_: int, descricao: str, alcance: Alcance = Alcance.TODAS) -> int:
         """Troca a descrição; com parcela e alcance TODAS, de todas as parcelas (D12)."""
         onde, parametros = self._alvo(id_, alcance)
         with self.transacao() as c:
+            agora = self.carimbar(c)
             if alcance is Alcance.PROXIMAS:
                 c.execute(
-                    "UPDATE recorrencia SET descricao = ? WHERE grupo = ?",
-                    (descricao.strip(), parametros[0]),
+                    "UPDATE recorrencia SET descricao = ?, alterado_em = ? WHERE grupo = ?",
+                    (descricao.strip(), agora, parametros[0]),
                 )
             return c.execute(
-                f"UPDATE lancamento SET descricao = ? WHERE {onde}",
-                (descricao.strip(), *parametros),
+                f"UPDATE lancamento SET descricao = ?, alterado_em = ?, gerado = 0 WHERE {onde}",
+                (descricao.strip(), agora, *parametros),
             ).rowcount
 
     def editar(self, id_: int, novo: NovoLancamento, alcance: Alcance = Alcance.TODAS) -> int:
@@ -339,14 +418,16 @@ class Banco:
             campos += ", data = ?"
             valores.append(novo.data.isoformat())
         with self.transacao() as c:
+            agora = self.carimbar(c)
             if alcance is Alcance.PROXIMAS:
                 c.execute(
                     "UPDATE recorrencia SET descricao = ?, valor = ?, tipo = ?, conta_id = ?,"
-                    " categoria_id = ? WHERE grupo = ?",
-                    (*valores[:5], parametros[0]),
+                    " categoria_id = ?, alterado_em = ? WHERE grupo = ?",
+                    (*valores[:5], agora, parametros[0]),
                 )
             return c.execute(
-                f"UPDATE lancamento SET {campos} WHERE {onde}", (*valores, *parametros)
+                f"UPDATE lancamento SET {campos}, alterado_em = ?, gerado = 0 WHERE {onde}",
+                (*valores, agora, *parametros),
             ).rowcount
 
     def _alvo(self, id_: int, alcance: Alcance) -> tuple[str, tuple]:
@@ -397,12 +478,19 @@ def _onde_mes(mes: Mes, filtro: Filtro) -> tuple[str, tuple]:
     return onde, tuple(parametros)
 
 
-def _inserir(c: sqlite3.Connection, n: NovoLancamento) -> int:
+def _inserir(
+    c: sqlite3.Connection,
+    n: NovoLancamento,
+    alterado_em: str,
+    uid: str | None = None,
+    gerado: bool = False,
+) -> int:
     p = n.parcela
     return c.execute(
         "INSERT INTO lancamento (data, descricao, valor, tipo, conta_id, categoria_id,"
-        " grupo_parcela, parcela_numero, parcela_total, grupo_recorrencia)"
-        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        " grupo_parcela, parcela_numero, parcela_total, grupo_recorrencia,"
+        " uid, alterado_em, gerado)"
+        " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         (
             n.data.isoformat(),
             n.descricao,
@@ -414,6 +502,9 @@ def _inserir(c: sqlite3.Connection, n: NovoLancamento) -> int:
             p.numero if p else None,
             p.total if p else None,
             n.grupo_recorrencia,
+            uid or uuid.uuid4().hex,
+            alterado_em,
+            int(gerado),
         ),
     ).lastrowid
 

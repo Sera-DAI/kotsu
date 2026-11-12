@@ -3,7 +3,7 @@
 # Verifica o Python (3.11+), instala o pipx se faltar e instala o Kotsu.
 # Não precisa de administrador. Para atualizar, rode de novo.
 $ErrorActionPreference = 'Stop'
-$repo = 'git+https://github.com/Sera-DAI/kotsu.git'
+$repo = 'kotsu-cli'
 
 function Find-Python {
     foreach ($c in @(@('py', '-3'), @('python'), @('python3'))) {

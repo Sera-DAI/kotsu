@@ -17,6 +17,7 @@ python ferramentas/verificar.py --rapido     # antes de cada commit
 python ferramentas/verificar.py              # antes de cada PR (igual à CI)
 python ferramentas/camadas.py                # só a regra de camadas
 python ferramentas/testar_instalacao.py      # pipx instalado; usa rede só na instalação
+python ferramentas/gerar_vetores.py          # regrava vetores/*.json (casos do Android)
 ```
 
 ## Camadas (o teste falha se forem violadas)
@@ -56,6 +57,25 @@ Regra financeira (totais, parcelas, parser da linha rápida) mora em `dominio/`;
 - Backup é só manual (D35): a tecla `b` copia o banco para `backups/` com data e hora no
   nome, sem sobrescrever, e mantém só as 5 mais recentes (poda depois de publicar). O app não faz backup sozinho. Teste relógio e
   falhas com dados temporários. Memória (`Banco.em_memoria()`) não cria backup.
+
+## Troca entre aparelhos (D39)
+
+- Cada aparelho tem o próprio banco; os dados se juntam por arquivo de troca
+  (`--exportar`, `--importar`, `--conferir`). A regra de mesclagem é pura e mora em
+  `dominio/mescla.py`; ler, gravar e aplicar ficam em `armazenamento/troca.py`.
+- Toda escrita em `conta`, `categoria`, `lancamento` e no modelo de `recorrencia` carimba
+  `alterado_em` com `Banco.carimbar(c)` (um carimbo por transação). Editar um lançamento
+  zera `gerado`. Excluir lançamento grava a lápide antes do `DELETE`. Esqueceu o carimbo?
+  A alteração perde para o outro aparelho na mesclagem.
+- Avançar `gerada_ate` não carimba: o mês gerado usa o `uid` fixo (`uid_do_mes`) e o
+  carimbo do modelo da série.
+- Campo novo em tabela sincronizada entra em: migração, `troca.ler_estado`, `troca._aplicar`,
+  `mescla.validar`, a forma canônica (muda o código de conferência) e `FORMATO` se o arquivo
+  antigo deixar de servir.
+- `vetores/*.json` são os casos compartilhados com o app Android. Mudou regra do domínio
+  (linha rápida, datas, dinheiro, carimbo, mesclagem)? Acrescente o caso em
+  `ferramentas/gerar_vetores.py`, rode-o e confira o diff do JSON. O teste falha se os
+  arquivos estiverem desatualizados.
 
 ## Como trabalhar
 

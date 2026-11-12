@@ -12,10 +12,15 @@ from pathlib import Path
 MANTER = 5
 
 
-def backup_manual(conexao: sqlite3.Connection, caminho: Path, agora: dt.datetime) -> Path:
+def backup_manual(
+    conexao: sqlite3.Connection,
+    caminho: Path,
+    agora: dt.datetime,
+    pasta: Path | None = None,
+) -> Path:
     from money_cli.armazenamento.banco import copiar_banco
 
-    pasta = caminho.parent / "backups"
+    pasta = pasta or caminho.parent / "backups"
     pasta.mkdir(parents=True, exist_ok=True)
     base = f"{caminho.stem}.{agora:%Y-%m-%d-%H%M%S}"
     descritor, nome = tempfile.mkstemp(prefix=".backup-", suffix=".tmp", dir=pasta)

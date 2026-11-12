@@ -1,0 +1,54 @@
+[
+ {
+  "centavos": 0,
+  "texto": "0,00"
+ },
+ {
+  "centavos": 1,
+  "texto": "0,01"
+ },
+ {
+  "centavos": 9,
+  "texto": "0,09"
+ },
+ {
+  "centavos": 10,
+  "texto": "0,10"
+ },
+ {
+  "centavos": 99,
+  "texto": "0,99"
+ },
+ {
+  "centavos": 100,
+  "texto": "1,00"
+ },
+ {
+  "centavos": 1250,
+  "texto": "12,50"
+ },
+ {
+  "centavos": 99999,
+  "texto": "999,99"
+ },
+ {
+  "centavos": 100000,
+  "texto": "1.000,00"
+ },
+ {
+  "centavos": 123456,
+  "texto": "1.234,56"
+ },
+ {
+  "centavos": 100000000,
+  "texto": "1.000.000,00"
+ },
+ {
+  "centavos": 123456789012,
+  "texto": "1.234.567.890,12"
+ },
+ {
+  "centavos": -8990,
+  "texto": "89,90"
+ }
+]

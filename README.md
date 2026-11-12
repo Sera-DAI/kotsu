@@ -1,100 +1,102 @@
 <p align="center">
-  <img src="docs/imagens/banner.svg" alt="Kotsu: finanças pessoais no terminal, fofas e sem complicação" width="100%">
+  <img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/banner.en.svg" alt="Kotsu: cozy personal finance in your terminal" width="100%">
 </p>
 
-<p align="center"><b>Português</b> · <a href="README.en.md">English</a></p>
+<p align="center"><b>English</b> · <a href="https://github.com/Sera-DAI/kotsu/blob/main/README.pt-BR.md">Português (Brasil)</a></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/python-3.11%2B-ff7fb8?style=flat-square&labelColor=1d1424&logo=python&logoColor=ffe9f4" alt="Python 3.11+">
-  <img src="https://img.shields.io/badge/terminal-Windows%20%C2%B7%20Linux-ff7fb8?style=flat-square&labelColor=1d1424&logo=windowsterminal&logoColor=ffe9f4" alt="Windows Terminal e Linux">
-  <img src="https://img.shields.io/badge/dados-s%C3%B3%20no%20seu%20computador-ffa28c?style=flat-square&labelColor=1d1424&logo=sqlite&logoColor=ffe9f4" alt="Dados locais">
-  <img src="https://img.shields.io/badge/licen%C3%A7a-MIT-ffa28c?style=flat-square&labelColor=1d1424" alt="Licença MIT">
+  <img src="https://img.shields.io/badge/terminal-Windows%20%C2%B7%20Linux-ff7fb8?style=flat-square&labelColor=1d1424&logo=windowsterminal&logoColor=ffe9f4" alt="Windows Terminal and Linux">
+  <img src="https://img.shields.io/badge/data-only%20on%20your%20computer-ffa28c?style=flat-square&labelColor=1d1424&logo=sqlite&logoColor=ffe9f4" alt="Local data">
+  <img src="https://img.shields.io/badge/license-MIT-ffa28c?style=flat-square&labelColor=1d1424" alt="MIT license">
 </p>
 
 <p align="center">
-  <img src="docs/imagens/stack/python.svg" width="44" alt="Python" title="Python">
-  <img src="docs/imagens/stack/githubactions.svg" width="44" alt="GitHub Actions" title="GitHub Actions">
-  <img src="docs/imagens/stack/claude.svg" width="44" alt="Claude" title="Claude">
+  <img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/stack/python.svg" width="44" alt="Python" title="Python">
+  <img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/stack/githubactions.svg" width="44" alt="GitHub Actions" title="GitHub Actions">
+  <img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/stack/claude.svg" width="44" alt="Claude" title="Claude">
 </p>
 
-<p align="center"><sub>Feito com Python, Textual, SQLite e Claude</sub></p>
+<p align="center"><sub>Built with Python, Textual, SQLite and Claude</sub></p>
 
-<p align="center"><img src="docs/imagens/divisor.svg" width="420" alt=""></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/divisor.svg" width="420" alt=""></p>
 
 # Kotsu
 
-**Kotsu** (コツコツ, *kotsukotsu*) quer dizer "aos pouquinhos, com constância". É um app de terminal para as finanças do dia a dia: receitas, despesas e parcelas do mês numa tela só, com o visual **Algodão-Doce** em rosa e salmão. Nada de planilha gigante nem painel cheio de gráfico. Você anota numa linha, vê o mês inteiro e segue com o seu dia.
+**Kotsu** (コツコツ, *kotsukotsu*) is a Japanese word for "little by little, steadily". It is a terminal app for everyday money: income, expenses and the month's installments on a single screen, in a pink and salmon **Cotton Candy** look. No giant spreadsheet, no dashboard full of charts. You jot an entry on one line, see the whole month and get on with your day.
 
-Roda no Windows Terminal e no Linux, funciona sem internet e guarda tudo num arquivo SQLite no seu computador. Não tem conta, nuvem, telemetria nem anúncio.
+It runs on Windows Terminal and Linux, works offline and keeps everything in a SQLite file on your computer. No account, no cloud, no telemetry, no ads.
 
-## Sumário
+> The app interface is in Brazilian Portuguese for now (labels such as *receitas* = income, *despesas* = expenses, *saldo* = balance). The commands and keys below work the same in any language.
 
-- [I. O que ele faz](#i-o-que-ele-faz)
-- [II. Instalar](#ii-instalar)
-- [III. Usar](#iii-usar)
-- [IV. Seus dados e backup](#iv-seus-dados-e-backup)
-- [V. Como é por dentro](#v-como-é-por-dentro)
-- [VI. Desenvolvimento](#vi-desenvolvimento)
-- [VII. Licença](#vii-licença)
+## Contents
 
-## I. O que ele faz
+- [I. What it does](#i-what-it-does)
+- [II. Install](#ii-install)
+- [III. Use](#iii-use)
+- [IV. Your data and backups](#iv-your-data-and-backups)
+- [V. Under the hood](#v-under-the-hood)
+- [VI. Development](#vi-development)
+- [VII. License](#vii-license)
 
-<table>
-  <tr>
-    <td width="72" align="center"><img src="docs/imagens/icones/lancar.svg" width="44" alt=""></td>
-    <td><b>Linha rápida</b><br><code>89,90 mercado #alimentação @nubank</code> e Enter. Sem formulário: o valor vem primeiro, e conta, categoria e data entram em qualquer ordem.</td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/imagens/icones/parcelas.svg" width="44" alt=""></td>
-    <td><b>Uma tela só</b><br>Receitas, despesas e saldo do mês, uma linha por conta (cada uma com a sua cor) e a lista de lançamentos. Setas ← / → trocam de mês.</td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/imagens/icones/todomes.svg" width="44" alt=""></td>
-    <td><b>Parcelas e "todo mês"</b><br><code>120 geladeira @nubank 10x</code> vira 10 parcelas, uma por mês. Categorias marcadas como "todo mês" (aluguel, internet, salário) reaparecem sozinhas, com um <code>↻</code>.</td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/imagens/icones/temas.svg" width="44" alt=""></td>
-    <td><b>Dois temas Algodão-Doce</b><br>Noite (padrão) e claro, com corações, rostinho e "zzz… zerada" quando a conta está vazia. A tecla <code>t</code> troca e a escolha fica salva.</td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/imagens/icones/teclado.svg" width="44" alt=""></td>
-    <td><b>Teclado primeiro</b><br>Tudo tem uma tecla, e o rodapé lembra qual. Filtra por <code>@conta</code> ou <code>#categoria</code> com <code>/</code>.</td>
-  </tr>
-  <tr>
-    <td align="center"><img src="docs/imagens/icones/privado.svg" width="44" alt=""></td>
-    <td><b>Privado de verdade</b><br>Os dados ficam no seu computador. O Kotsu nunca envia nada para a rede.</td>
-  </tr>
-</table>
-
-## II. Instalar
+## I. What it does
 
 <table>
   <tr>
-    <td width="72" align="center"><img src="docs/imagens/icones/instalar.svg" width="44" alt=""></td>
-    <td>Requer Python 3.11 ou mais recente e o <a href="https://pipx.pypa.io/">pipx</a>. O pacote ainda não está no PyPI: instale direto do GitHub.</td>
+    <td width="72" align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/lancar.svg" width="44" alt=""></td>
+    <td><b>Quick line</b><br><code>89,90 mercado #alimentação @nubank</code> and Enter. No forms: the amount comes first, then account, category and date in any order.</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/parcelas.svg" width="44" alt=""></td>
+    <td><b>One screen</b><br>Income, expenses and balance for the month, one line per account (each with its own color) and the list of entries. The ← / → arrows switch months.</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/todomes.svg" width="44" alt=""></td>
+    <td><b>Installments and "every month"</b><br><code>120 geladeira @nubank 10x</code> becomes 10 installments, one per month. Categories marked "every month" (rent, internet, salary) show up on their own, with a <code>↻</code>.</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/temas.svg" width="44" alt=""></td>
+    <td><b>Two Cotton Candy themes</b><br>Night (default) and light, with hearts, a little face and "zzz… zerada" when an account is empty. The <code>t</code> key switches and your choice is saved.</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/teclado.svg" width="44" alt=""></td>
+    <td><b>Keyboard first</b><br>Everything has a key, and the footer reminds you which. Filter by <code>@account</code> or <code>#category</code> with <code>/</code>.</td>
+  </tr>
+  <tr>
+    <td align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/privado.svg" width="44" alt=""></td>
+    <td><b>Truly private</b><br>Your data stays on your computer. Kotsu never sends anything over the network.</td>
   </tr>
 </table>
 
-Windows Terminal (PowerShell), em uma linha:
+## II. Install
+
+<table>
+  <tr>
+    <td width="72" align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/instalar.svg" width="44" alt=""></td>
+    <td>Requires Python 3.11 or newer and <a href="https://pipx.pypa.io/">pipx</a>. The package is not on PyPI yet: install straight from GitHub.</td>
+  </tr>
+</table>
+
+Windows Terminal (PowerShell), in one line:
 
 ```powershell
 irm https://raw.githubusercontent.com/Sera-DAI/kotsu/main/instalar.ps1 | iex
 ```
 
-Linux/macOS (precisa do pipx; o script avisa se faltar):
+Linux/macOS (needs pipx; the script tells you if it is missing):
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Sera-DAI/kotsu/main/instalar.sh | bash
 ```
 
-Ou, passo a passo, sem script:
+Or step by step, without a script:
 
 Windows Terminal (PowerShell):
 
 ```powershell
 py -m pip install --user pipx
 py -m pipx ensurepath
-py -m pipx install git+https://github.com/Sera-DAI/kotsu.git
+py -m pipx install kotsu-cli
 ```
 
 Linux (Debian/Ubuntu):
@@ -102,12 +104,12 @@ Linux (Debian/Ubuntu):
 ```bash
 sudo apt install pipx
 pipx ensurepath
-pipx install git+https://github.com/Sera-DAI/kotsu.git
+pipx install kotsu-cli
 ```
 
-Reabra o terminal e rode `kotsu`. Para atualizar: `pipx upgrade kotsu-cli` (ou rode o instalador de novo). Para remover: `pipx uninstall kotsu-cli` (seus dados continuam na pasta de dados).
+Reopen the terminal and run `kotsu`. To update: `pipx upgrade kotsu-cli` (or run the installer again). To remove: `pipx uninstall kotsu-cli` (your data stays in the data folder).
 
-## III. Usar
+## III. Use
 
 ```text
  ☁ Algodão-Doce ☁   novembro de 2026
@@ -122,81 +124,84 @@ Reabra o terminal e rode `kotsu`. Para atualizar: `pipx upgrade kotsu-cli` (ou r
  07/11  mercado     alimentação   nubank   89,90
 ```
 
-| Tecla | Ação |
+| Key | Action |
 |---|---|
-| `l` | abre a linha rápida (Enter salva, Esc fecha) |
-| ← / → | mês anterior / seguinte |
-| `/` | filtra por `@conta`, `#categoria`, os dois ou só o nome (Enter vazio ou Esc tira) |
-| `e` | edita o selecionado na linha rápida, inclusive a data |
-| `c` | copia o selecionado para a linha rápida, com a data de hoje |
-| `d` | exclui o selecionado (parcela pergunta "só esta ou todas?") |
-| `r` | renomeia o selecionado |
-| `m` | liga/desliga "todo mês" na categoria do selecionado |
-| `b` | backup manual do banco (cópia nova em `backups/`) |
-| `t` | troca o tema (Algodão-Doce noite ou claro) |
-| `q` | sai |
+| `l` | opens the quick line (Enter saves, Esc closes) |
+| ← / → | previous / next month |
+| `/` | filters by `@account`, `#category`, both, or just a name (empty Enter or Esc clears) |
+| `e` | edits the selected entry in the quick line, date included |
+| `c` | copies the selected entry into the quick line, dated today |
+| `d` | deletes the selected entry (an installment asks "only this one or all?") |
+| `r` | renames the selected entry |
+| `m` | turns "every month" on/off for the selected entry's category |
+| `b` | manual database backup (a new copy in `backups/`) |
+| `t` | switches the theme (Cotton Candy night or light) |
+| `v` | shows the check code (same on another device = same data) |
+| `q` | quits |
 
-A linha começa pelo valor; o resto vem em qualquer ordem:
+The line starts with the amount; the rest comes in any order:
 
 ```text
-89,90 mercado #alimentação @nubank     despesa (sem sinal)
-+3500 salário @itaú                    receita
-120 geladeira #casa @nubank 10x        10 parcelas de 120,00, uma por mês
-45 farmácia ontem                      data: ontem, 15/10 ou 15/10/2025 (padrão: hoje)
+89,90 mercado #alimentação @nubank     expense (no sign)
++3500 salário @itaú                    income
+120 geladeira #casa @nubank 10x        10 installments of 120.00, one per month
+45 farmácia ontem                      date: ontem (yesterday), 15/10 or 15/10/2025 (default: today)
 ```
 
-Todo lançamento precisa de `@conta`; sem ela a linha não salva. Conta ou categoria que não existe pergunta se deve criar. Editar ou renomear uma parcela pergunta "só esta ou todas?".
+Every entry needs an `@account`; without one the line is not saved. An account or category that does not exist yet asks whether to create it. Editing or renaming an installment asks "only this one or all?". Amounts use a decimal comma and dates are day/month, as in Brazil.
 
-### ↻ Categorias que se repetem todo mês
+### ↻ Categories that repeat every month
 
-Ao criar uma categoria o Kotsu pergunta se ela repete todo mês (ou use `m` numa categoria existente). Todo lançamento novo nela reaparece em cada mês, com o mesmo valor, conta e dia (dia 31 vira o último dia do mês), sem fim, até você mandar parar. Os meses aparecem ao navegar com ← / →, até 24 meses à frente de hoje. Excluir, editar ou renomear um deles pergunta "só este mês ou os próximos?".
+When you create a category, Kotsu asks whether it repeats every month (or press `m` on an existing one). Every new entry in it reappears each month with the same amount, account and day (day 31 becomes the last day of the month), with no end, until you stop it. Months appear as you navigate with ← / →, up to 24 months ahead of today. Deleting, editing or renaming one asks "only this month or the following ones?".
 
-## IV. Seus dados e backup
+## IV. Your data and backups
 
 <table>
   <tr>
-    <td width="72" align="center"><img src="docs/imagens/icones/backup.svg" width="44" alt=""></td>
+    <td width="72" align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/backup.svg" width="44" alt=""></td>
     <td>
       <ul>
-        <li><b>Onde ficam:</b> <code>%APPDATA%\money-cli</code> no Windows e <code>~/.local/share/money-cli</code> no Linux (ou a pasta da variável <code>MONEY_CLI_DADOS</code>). <code>kotsu --dados PASTA</code> abre outra pasta.</li>
-        <li><b>Backup manual:</b> a tecla <code>b</code> cria <code>backups/money.AAAA-MM-DD-HHMMSS.sqlite</code> e mantém as 5 cópias mais recentes. O Kotsu não faz backup sozinho.</li>
-        <li><b>Sem senha nem criptografia:</b> proteja o computador e a pasta como protegeria qualquer arquivo pessoal.</li>
-        <li><b>Restaurar:</b> feche o app, guarde o <code>money.sqlite</code> atual em outra pasta, copie o backup escolhido para <code>money.sqlite</code>, abra e confira os totais.</li>
+        <li><b>Where it lives:</b> <code>%APPDATA%\money-cli</code> on Windows and <code>~/.local/share/money-cli</code> on Linux (or the folder in the <code>MONEY_CLI_DADOS</code> variable). <code>kotsu --dados FOLDER</code> opens another folder.</li>
+        <li><b>Manual backup:</b> the <code>b</code> key creates <code>backups/money.YYYY-MM-DD-HHMMSS.sqlite</code> and keeps the 5 most recent copies. Kotsu never backs up on its own.</li>
+        <li><b>Using two computers (Google Drive):</b> on both, run <code>kotsu --pasta-dados "G:\My Drive\Kotsu"</code> (any existing data on the computer is copied there; if both already have data, choose which one wins). Keep the folder "Available offline". Use one computer at a time: Kotsu warns if it is open on the other one and refuses to open if Drive created conflicting copies (<code>--forcar</code> skips the warning). Backups from the <code>b</code> key stay in the local folder, outside Drive. <code>kotsu --pasta-dados-padrao</code> undoes it.</li>
+        <li><b>Merging with another device:</b> <code>kotsu --exportar data.json</code> writes everything to a file; on the other device, <code>kotsu --importar data.json</code> merges it with what is there (the most recent change to each entry wins, and deleted entries stay deleted). Do it both ways and check: <code>kotsu --conferir</code> shows a short code that is the same on both when the data is the same; <code>kotsu --conferir data.json</code> lists the differences. Before importing, Kotsu saves <code>backups/money.antes-da-troca.sqlite</code>.</li>
+        <li><b>No password or encryption:</b> protect your computer and the folder as you would any personal file.</li>
+        <li><b>Restore:</b> close the app, move the current <code>money.sqlite</code> elsewhere, copy the chosen backup to <code>money.sqlite</code>, open the app and check the totals.</li>
       </ul>
     </td>
   </tr>
 </table>
 
-## V. Como é por dentro
+## V. Under the hood
 
 <table>
   <tr>
-    <td width="72" align="center"><img src="docs/imagens/icones/estrutura.svg" width="44" alt=""></td>
-    <td>Três camadas, e um teste falha se uma delas importar o que não pode. A regra financeira (totais, parcelas, a linha rápida) mora no domínio; a tela só mostra.</td>
+    <td width="72" align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/estrutura.svg" width="44" alt=""></td>
+    <td>Three layers, and a test fails if one of them imports what it must not. Financial rules (totals, installments, the quick-line parser) live in the domain; the screen only displays.</td>
   </tr>
 </table>
 
 ```mermaid
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#41274f", "primaryTextColor": "#ffe9f4", "primaryBorderColor": "#ff7fb8", "lineColor": "#ffa28c", "secondaryColor": "#291b33", "tertiaryColor": "#1d1424", "fontFamily": "Segoe UI, sans-serif"}}}%%
 flowchart LR
-    T["tela/<br>Textual: só mostra"] --> A["armazenamento/<br>SQLite, migrações, backup"]
-    T --> D["dominio/<br>dinheiro em centavos,<br>parcelas, linha rápida"]
+    T["tela/<br>Textual: display only"] --> A["armazenamento/<br>SQLite, migrations, backup"]
+    T --> D["dominio/<br>money in cents,<br>installments, quick line"]
     A --> D
-    A --> F[("money.sqlite<br>no seu computador")]
+    A --> F[("money.sqlite<br>on your computer")]
 ```
 
-- Dinheiro é inteiro em centavos, nunca `float`; o sinal vem do tipo (receita ou despesa).
-- Toda escrita é uma transação: grava tudo ou nada. Mudou o esquema? Migração numerada, com cópia do banco antes.
-- Os totais nunca são gravados: o SQL calcula por mês.
+- Money is an integer number of cents, never a `float`; the sign comes from the type (income or expense).
+- Every write is a transaction: all or nothing. Changed the schema? A numbered migration, with a copy of the database made first.
+- Totals are never stored: SQL computes them per month.
 
-Regras completas para quem contribui: [AGENTS.md](AGENTS.md).
+Full contributor rules (in Portuguese): [AGENTS.md](AGENTS.md).
 
-## VI. Desenvolvimento
+## VI. Development
 
 <table>
   <tr>
-    <td width="72" align="center"><img src="docs/imagens/icones/dev.svg" width="44" alt=""></td>
-    <td>Requer Python 3.11+. Os testes nunca acessam a rede.</td>
+    <td width="72" align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/dev.svg" width="44" alt=""></td>
+    <td>Requires Python 3.11+. The tests never touch the network.</td>
   </tr>
 </table>
 
@@ -206,18 +211,18 @@ cd kotsu
 python -m venv .venv
 # Windows: .venv\Scripts\activate    Linux: source .venv/bin/activate
 pip install -e ".[dev]"
-kotsu --dados ./tmp                          # usa uma pasta de teste
-python ferramentas/verificar.py --rapido     # lint + testes rápidos
-python ferramentas/verificar.py              # tudo, igual à CI
+kotsu --dados ./tmp                          # uses a test folder
+python ferramentas/verificar.py --rapido     # lint + fast tests
+python ferramentas/verificar.py              # everything, same as CI
 ```
 
-## VII. Licença
+## VII. License
 
 <table>
   <tr>
-    <td width="72" align="center"><img src="docs/imagens/icones/licenca.svg" width="44" alt=""></td>
-    <td><a href="LICENSE">MIT</a>. Feito com carinho, aos pouquinhos.</td>
+    <td width="72" align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/icones/licenca.svg" width="44" alt=""></td>
+    <td><a href="https://github.com/Sera-DAI/kotsu/blob/main/LICENSE">MIT</a>. Made with care, little by little.</td>
   </tr>
 </table>
 
-<p align="center"><img src="docs/imagens/divisor.svg" width="420" alt=""></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Sera-DAI/kotsu/main/docs/imagens/divisor.svg" width="420" alt=""></p>
