@@ -14,7 +14,7 @@ from textual.binding import Binding
 from textual.widgets import DataTable, Footer, Input, Static
 from textual.widgets.data_table import RowDoesNotExist
 
-from money_cli.armazenamento import preferencias
+from money_cli.armazenamento import preferencias, troca
 from money_cli.armazenamento.banco import Banco
 from money_cli.dominio import dinheiro, parcelas
 from money_cli.dominio.filtro import SEM_FILTRO, Filtro, interpretar_filtro
@@ -76,6 +76,7 @@ class MoneyApp(App[None]):
         Binding("m", "mensal", "Todo mês"),
         Binding("b", "backup", "Backup"),
         Binding("t", "tema", "Tema"),
+        Binding("v", "conferir", "Conferir"),
         Binding("q", "quit", "Sair"),
     ]
 
@@ -156,6 +157,10 @@ class MoneyApp(App[None]):
             self.notify("Banco em memória: não há arquivo para copiar.", severity="warning")
         else:
             self.notify(f"Backup salvo em {destino}", timeout=8)
+
+    def action_conferir(self) -> None:
+        """Mostra o código de conferência: igual ao do outro aparelho = mesmos dados (D39)."""
+        self.notify(f"Código de conferência: {troca.codigo(self.banco)}", timeout=15)
 
     # --- navegação e desenho -------------------------------------------------
 

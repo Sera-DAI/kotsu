@@ -1,0 +1,674 @@
+[
+ {
+  "arquivo": [],
+  "erro": "este arquivo não é uma exportação do Kotsu",
+  "nome": "não é objeto"
+ },
+ {
+  "arquivo": {
+   "app": "outro",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "este arquivo não é uma exportação do Kotsu",
+  "nome": "outro app"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "este arquivo não é uma exportação do Kotsu",
+  "nome": "sem formato"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 2,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo no formato 2, mais novo que este Kotsu (formato 1): atualize o Kotsu neste aparelho",
+  "nome": "formato mais novo"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca incompleto ou estragado ('lapides')",
+  "nome": "falta uma seção"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 0
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca inválido: valor de lançamento l-1",
+  "nome": "valor zero"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 12.5
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca inválido: valor de lançamento l-1",
+  "nome": "valor com casas"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "outro",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca inválido: tipo de lançamento l-1",
+  "nome": "tipo desconhecido"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-02-30",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca inválido: data do lançamento l-1",
+  "nome": "data impossível"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-x",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca inválido: conta desconhecida em lançamento l-1",
+  "nome": "conta desconhecida"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": "g-x",
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca inválido: categoria desconhecida em lançamento l-1",
+  "nome": "categoria desconhecida"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": "s-x",
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca inválido: série desconhecida no lançamento l-1",
+  "nome": "série desconhecida"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    },
+    {
+     "alterado_em": "0000000000011-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca inválido: lançamento l-1 repetido",
+  "nome": "lançamento repetido"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "ontem",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca inválido: carimbo de lançamento l-1",
+  "nome": "carimbo torto"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": {
+      "grupo": "p",
+      "numero": 3,
+      "total": 2
+     },
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca inválido: parcela do lançamento l-1",
+  "nome": "parcela fora do total"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    },
+    {
+     "alterado_em": "0000000000002-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "NUBANK",
+     "uid": "c-2"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "alterado_em": "0000000000010-0000-aaaaaaaa",
+     "categoria": null,
+     "conta": "c-nu",
+     "data": "2026-11-08",
+     "descricao": "padaria",
+     "gerado": false,
+     "parcela": null,
+     "recorrencia": null,
+     "tipo": "despesa",
+     "uid": "l-1",
+     "valor": 1250
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca inválido: conta repetida (NUBANK)",
+  "nome": "contas com o mesmo nome"
+ },
+ {
+  "arquivo": {
+   "app": "kotsu",
+   "categorias": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "nome": "aluguel",
+     "recorrente": true,
+     "uid": "g-alu"
+    }
+   ],
+   "contas": [
+    {
+     "alterado_em": "0000000000001-0000-aaaaaaaa",
+     "cor": "#ff85bd",
+     "nome": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "formato": 1,
+   "lancamentos": [
+    {
+     "uid": "l-1"
+    }
+   ],
+   "lapides": [],
+   "recorrencias": []
+  },
+  "erro": "arquivo de troca incompleto ou estragado ('data')",
+  "nome": "lançamento sem campo"
+ }
+]
