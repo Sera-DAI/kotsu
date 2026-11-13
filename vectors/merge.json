@@ -1,0 +1,1948 @@
+[
+ {
+  "a": {
+   "accounts": [],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "code_a": "e3b0-c442-98fc",
+  "code_b": "e3b0-c442-98fc",
+  "expected": {
+   "accounts": [],
+   "categories": [],
+   "entries": [],
+   "recurrences": [],
+   "tombstones": []
+  },
+  "expected_canonical_form": "",
+  "expected_code": "e3b0-c442-98fc",
+  "name": "two empty states"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 2000,
+     "category": null,
+     "changed_at": "0000000000011-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "uber",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-2"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "code_a": "6c19-987a-8ef7",
+  "code_b": "d77b-bf1f-1b8a",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    },
+    {
+     "account": "c-nu",
+     "amount": 2000,
+     "category": null,
+     "changed_at": "0000000000011-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "uber",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-2"
+    }
+   ],
+   "recurrences": [],
+   "tombstones": []
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nE\u001fl-1\u001f2026-11-08\u001fbakery\u001f1250\u001fexpense\u001fc-nu\u001f\u001f\u001f\u001f\u001f\nE\u001fl-2\u001f2026-11-08\u001fuber\u001f2000\u001fexpense\u001fc-nu\u001f\u001f\u001f\u001f\u001f",
+  "expected_code": "e5a4-ae46-ab3f",
+  "name": "entry created on each side shows on both"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000020-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "joe's bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1500,
+     "category": null,
+     "changed_at": "0000000000030-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "code_a": "9108-d796-1f8d",
+  "code_b": "5495-3e98-f5a3",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1500,
+     "category": null,
+     "changed_at": "0000000000030-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "recurrences": [],
+   "tombstones": []
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nE\u001fl-1\u001f2026-11-08\u001fbakery\u001f1500\u001fexpense\u001fc-nu\u001f\u001f\u001f\u001f\u001f",
+  "expected_code": "5495-3e98-f5a3",
+  "name": "same entry edited on both sides: the larger stamp wins, whole"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000020-0002-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "a",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000020-0001-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "b",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "code_a": "483e-f4c3-8426",
+  "code_b": "c2c0-8b2f-782c",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000020-0002-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "a",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "recurrences": [],
+   "tombstones": []
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nE\u001fl-1\u001f2026-11-08\u001fa\u001f1250\u001fexpense\u001fc-nu\u001f\u001f\u001f\u001f\u001f",
+  "expected_code": "483e-f4c3-8426",
+  "name": "same millisecond: the counter breaks the tie, then the replica"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000020-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "a",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000020-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "b",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "code_a": "483e-f4c3-8426",
+  "code_b": "c2c0-8b2f-782c",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000020-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "b",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "recurrences": [],
+   "tombstones": []
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nE\u001fl-1\u001f2026-11-08\u001fb\u001f1250\u001fexpense\u001fc-nu\u001f\u001f\u001f\u001f\u001f",
+  "expected_code": "c2c0-8b2f-782c",
+  "name": "exact same stamp: the replica breaks the tie"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000040-0000-aaaaaaaa",
+     "uid": "l-1"
+    }
+   ]
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000030-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "code_a": "ad66-0748-9739",
+  "code_b": "6c19-987a-8ef7",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [],
+   "entries": [],
+   "recurrences": [],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000040-0000-aaaaaaaa",
+     "uid": "l-1"
+    }
+   ]
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nT\u001fl-1",
+  "expected_code": "ad66-0748-9739",
+  "name": "deleted on one side after the other's last edit: removed"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000040-0000-aaaaaaaa",
+     "uid": "l-1"
+    }
+   ]
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000050-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "came back",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "code_a": "ad66-0748-9739",
+  "code_b": "d558-23e3-11a0",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000050-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "came back",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "recurrences": [],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000040-0000-aaaaaaaa",
+     "uid": "l-1"
+    }
+   ]
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nE\u001fl-1\u001f2026-11-08\u001fcame back\u001f1250\u001fexpense\u001fc-nu\u001f\u001f\u001f\u001f\u001f\nT\u001fl-1",
+  "expected_code": "f8ca-54a5-7089",
+  "name": "edited on one side after deleted on the other: comes back"
+ },
+ {
+  "a": {
+   "accounts": [],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000040-0000-aaaaaaaa",
+     "uid": "l-1"
+    },
+    {
+     "deleted_at": "0000000000041-0000-aaaaaaaa",
+     "uid": "l-2"
+    }
+   ]
+  },
+  "b": {
+   "accounts": [],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000045-0000-bbbbbbbb",
+     "uid": "l-1"
+    }
+   ]
+  },
+  "code_a": "3267-513f-326c",
+  "code_b": "40f6-ffef-9b58",
+  "expected": {
+   "accounts": [],
+   "categories": [],
+   "entries": [],
+   "recurrences": [],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000045-0000-bbbbbbbb",
+     "uid": "l-1"
+    },
+    {
+     "deleted_at": "0000000000041-0000-aaaaaaaa",
+     "uid": "l-2"
+    }
+   ]
+  },
+  "expected_canonical_form": "T\u001fl-1\nT\u001fl-2",
+  "expected_code": "3267-513f-326c",
+  "name": "tombstones on both sides: the newest stays"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000005-0000-aaaaaaaa",
+     "color": "#ff7a00",
+     "name": "Itaú",
+     "uid": "c-zz"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-zz",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000007-0000-bbbbbbbb",
+     "color": "#0000ff",
+     "name": "ITAÚ",
+     "uid": "c-aa"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-aa",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000011-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-2"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "code_a": "7198-6b49-358f",
+  "code_b": "fddb-e7b5-21c6",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000007-0000-bbbbbbbb",
+     "color": "#0000ff",
+     "name": "ITAÚ",
+     "uid": "c-aa"
+    }
+   ],
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-aa",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    },
+    {
+     "account": "c-aa",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000011-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-2"
+    }
+   ],
+   "recurrences": [],
+   "tombstones": []
+  },
+  "expected_canonical_form": "A\u001fc-aa\u001fITAÚ\u001f#0000ff\nE\u001fl-1\u001f2026-11-08\u001fbakery\u001f1250\u001fexpense\u001fc-aa\u001f\u001f\u001f\u001f\u001f\nE\u001fl-2\u001f2026-11-08\u001fbakery\u001f1250\u001fexpense\u001fc-aa\u001f\u001f\u001f\u001f\u001f",
+  "expected_code": "bf0c-edd8-bd05",
+  "name": "same account created on both sides: one remains, smallest uid and newest content"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000005-0000-aaaaaaaa",
+     "name": "Home",
+     "recurring": false,
+     "uid": "g-2"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": "g-2",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000003-0000-bbbbbbbb",
+     "name": "home",
+     "recurring": false,
+     "uid": "g-1"
+    },
+    {
+     "changed_at": "0000000000004-0000-bbbbbbbb",
+     "name": "leisure",
+     "recurring": false,
+     "uid": "g-9"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": "g-1",
+     "changed_at": "0000000000011-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-2"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "code_a": "8845-2b78-3115",
+  "code_b": "fa6e-4c9a-63c2",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [
+    {
+     "changed_at": "0000000000005-0000-aaaaaaaa",
+     "name": "Home",
+     "recurring": false,
+     "uid": "g-1"
+    },
+    {
+     "changed_at": "0000000000004-0000-bbbbbbbb",
+     "name": "leisure",
+     "recurring": false,
+     "uid": "g-9"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": "g-1",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    },
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": "g-1",
+     "changed_at": "0000000000011-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-2"
+    }
+   ],
+   "recurrences": [],
+   "tombstones": []
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nC\u001fg-1\u001fHome\u001f0\nC\u001fg-9\u001fleisure\u001f0\nE\u001fl-1\u001f2026-11-08\u001fbakery\u001f1250\u001fexpense\u001fc-nu\u001fg-1\u001f\u001f\u001f\u001f\nE\u001fl-2\u001f2026-11-08\u001fbakery\u001f1250\u001fexpense\u001fc-nu\u001fg-1\u001f\u001f\u001f\u001f",
+  "expected_code": "3b98-cfec-3ce8",
+  "name": "same category created on both sides with another spelling"
+ },
+ {
+  "a": {
+   "accounts": [],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000005-0000-aaaaaaaa",
+     "name": "power",
+     "recurring": false,
+     "uid": "g-1"
+    }
+   ],
+   "entries": [],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000009-0000-bbbbbbbb",
+     "name": "power",
+     "recurring": true,
+     "uid": "g-1"
+    }
+   ],
+   "entries": [],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "code_a": "c9e5-58b8-f271",
+  "code_b": "84df-eb52-94e4",
+  "expected": {
+   "accounts": [],
+   "categories": [
+    {
+     "changed_at": "0000000000009-0000-bbbbbbbb",
+     "name": "power",
+     "recurring": true,
+     "uid": "g-1"
+    }
+   ],
+   "entries": [],
+   "recurrences": [],
+   "tombstones": []
+  },
+  "expected_canonical_form": "C\u001fg-1\u001fpower\u001f1",
+  "expected_code": "84df-eb52-94e4",
+  "name": "category marked as every month on one side"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 12000,
+     "category": null,
+     "changed_at": "0000000000010-0000-bbbbbbbb",
+     "date": "2026-11-10",
+     "description": "fridge",
+     "generated": false,
+     "installment": {
+      "group": "p-1",
+      "number": 1,
+      "total": 2
+     },
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-p1"
+    },
+    {
+     "account": "c-nu",
+     "amount": 12000,
+     "category": null,
+     "changed_at": "0000000000010-0000-bbbbbbbb",
+     "date": "2026-12-10",
+     "description": "fridge",
+     "generated": false,
+     "installment": {
+      "group": "p-1",
+      "number": 2,
+      "total": 2
+     },
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-p2"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "code_a": "410a-31bd-76c7",
+  "code_b": "3e09-798a-7ddf",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 12000,
+     "category": null,
+     "changed_at": "0000000000010-0000-bbbbbbbb",
+     "date": "2026-11-10",
+     "description": "fridge",
+     "generated": false,
+     "installment": {
+      "group": "p-1",
+      "number": 1,
+      "total": 2
+     },
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-p1"
+    },
+    {
+     "account": "c-nu",
+     "amount": 12000,
+     "category": null,
+     "changed_at": "0000000000010-0000-bbbbbbbb",
+     "date": "2026-12-10",
+     "description": "fridge",
+     "generated": false,
+     "installment": {
+      "group": "p-1",
+      "number": 2,
+      "total": 2
+     },
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-p2"
+    }
+   ],
+   "recurrences": [],
+   "tombstones": []
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nE\u001fl-p1\u001f2026-11-10\u001ffridge\u001f12000\u001fexpense\u001fc-nu\u001f\u001fp-1\u001f1\u001f2\u001f\nE\u001fl-p2\u001f2026-12-10\u001ffridge\u001f12000\u001fexpense\u001fc-nu\u001f\u001fp-1\u001f2\u001f2\u001f",
+  "expected_code": "3e09-798a-7ddf",
+  "name": "installment purchase made on one side comes in whole"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-05",
+     "description": "rent",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-1",
+     "uid": "l-1"
+    },
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-12-05",
+     "description": "rent",
+     "generated": true,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-1",
+     "uid": "s-1-2026-12"
+    }
+   ],
+   "format": 2,
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2026-12-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-05",
+     "description": "rent",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-1",
+     "uid": "l-1"
+    },
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-12-05",
+     "description": "rent",
+     "generated": true,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-1",
+     "uid": "s-1-2026-12"
+    },
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2027-01-05",
+     "description": "rent",
+     "generated": true,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-1",
+     "uid": "s-1-2027-01"
+    }
+   ],
+   "format": 2,
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2027-01-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "code_a": "1298-cd56-5d77",
+  "code_b": "1298-cd56-5d77",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-05",
+     "description": "rent",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-1",
+     "uid": "l-1"
+    },
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-12-05",
+     "description": "rent",
+     "generated": true,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-1",
+     "uid": "s-1-2026-12"
+    },
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2027-01-05",
+     "description": "rent",
+     "generated": true,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-1",
+     "uid": "s-1-2027-01"
+    }
+   ],
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2027-01-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nC\u001fg-rent\u001frent\u001f1\nR\u001fs-1\u001f5\u001frent\u001f100000\u001fexpense\u001fc-nu\u001fg-rent\u001f0\nE\u001fl-1\u001f2026-11-05\u001frent\u001f100000\u001fexpense\u001fc-nu\u001fg-rent\u001f\u001f\u001f\u001fs-1",
+  "expected_code": "1298-cd56-5d77",
+  "name": "series: both sides generated the same month; one generated further"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [],
+   "format": 2,
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2026-12-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000050-0000-aaaaaaaa",
+     "uid": "s-1-2026-12"
+    }
+   ]
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-12-05",
+     "description": "rent",
+     "generated": true,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-1",
+     "uid": "s-1-2026-12"
+    }
+   ],
+   "format": 2,
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2026-12-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "code_a": "c0cd-fed8-319a",
+  "code_b": "422a-c266-d263",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [],
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2026-12-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000050-0000-aaaaaaaa",
+     "uid": "s-1-2026-12"
+    }
+   ]
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nC\u001fg-rent\u001frent\u001f1\nR\u001fs-1\u001f5\u001frent\u001f100000\u001fexpense\u001fc-nu\u001fg-rent\u001f0\nT\u001fs-1-2026-12",
+  "expected_code": "c0cd-fed8-319a",
+  "name": "series: month generated on one side and deleted (only this) on the other stays deleted"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-12-05",
+     "description": "rent",
+     "generated": true,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-1",
+     "uid": "s-1-2026-12"
+    }
+   ],
+   "format": 2,
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2026-12-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 110000,
+     "category": "g-rent",
+     "changed_at": "0000000000060-0000-bbbbbbbb",
+     "date": "2026-12-05",
+     "description": "rent",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-1",
+     "uid": "s-1-2026-12"
+    }
+   ],
+   "format": 2,
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2026-12-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "code_a": "422a-c266-d263",
+  "code_b": "1f6a-b0ad-c318",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 110000,
+     "category": "g-rent",
+     "changed_at": "0000000000060-0000-bbbbbbbb",
+     "date": "2026-12-05",
+     "description": "rent",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-1",
+     "uid": "s-1-2026-12"
+    }
+   ],
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2026-12-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nC\u001fg-rent\u001frent\u001f1\nR\u001fs-1\u001f5\u001frent\u001f100000\u001fexpense\u001fc-nu\u001fg-rent\u001f0\nE\u001fs-1-2026-12\u001f2026-12-05\u001frent\u001f110000\u001fexpense\u001fc-nu\u001fg-rent\u001f\u001f\u001f\u001fs-1",
+  "expected_code": "1f6a-b0ad-c318",
+  "name": "series: month generated on one side and edited on the other keeps the edit"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [],
+   "format": 2,
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000070-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": true,
+     "generated_until": "2026-12-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [],
+   "format": 2,
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2027-03-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "code_a": "6444-5df9-f8ea",
+  "code_b": "422a-c266-d263",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [],
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000070-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": true,
+     "generated_until": "2027-03-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nC\u001fg-rent\u001frent\u001f1\nR\u001fs-1\u001f5\u001frent\u001f100000\u001fexpense\u001fc-nu\u001fg-rent\u001f1",
+  "expected_code": "6444-5df9-f8ea",
+  "name": "series: ended on one side, older template on the other"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [],
+   "format": 2,
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2026-11-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000002-0000-bbbbbbbb",
+     "color": "#ff85bd",
+     "name": "Nubank",
+     "uid": "c-b"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000002-0000-bbbbbbbb",
+     "name": "Rent",
+     "recurring": true,
+     "uid": "g-b"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-b",
+     "amount": 1250,
+     "category": "g-b",
+     "changed_at": "0000000000012-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-2",
+     "uid": "l-9"
+    }
+   ],
+   "format": 2,
+   "recurrences": [
+    {
+     "account": "c-b",
+     "amount": 100000,
+     "category": "g-b",
+     "changed_at": "0000000000012-0000-bbbbbbbb",
+     "day": 31,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2026-11-01",
+     "group": "s-2",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "code_a": "422a-c266-d263",
+  "code_b": "4ba1-a4d5-e099",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000002-0000-bbbbbbbb",
+     "color": "#ff85bd",
+     "name": "Nubank",
+     "uid": "c-b"
+    }
+   ],
+   "categories": [
+    {
+     "changed_at": "0000000000002-0000-bbbbbbbb",
+     "name": "Rent",
+     "recurring": true,
+     "uid": "g-b"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-b",
+     "amount": 1250,
+     "category": "g-b",
+     "changed_at": "0000000000012-0000-bbbbbbbb",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-2",
+     "uid": "l-9"
+    }
+   ],
+   "recurrences": [
+    {
+     "account": "c-b",
+     "amount": 100000,
+     "category": "g-b",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2026-11-01",
+     "group": "s-1",
+     "kind": "expense"
+    },
+    {
+     "account": "c-b",
+     "amount": 100000,
+     "category": "g-b",
+     "changed_at": "0000000000012-0000-bbbbbbbb",
+     "day": 31,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2026-11-01",
+     "group": "s-2",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "expected_canonical_form": "A\u001fc-b\u001fNubank\u001f#ff85bd\nC\u001fg-b\u001fRent\u001f1\nR\u001fs-1\u001f5\u001frent\u001f100000\u001fexpense\u001fc-b\u001fg-b\u001f0\nR\u001fs-2\u001f31\u001frent\u001f100000\u001fexpense\u001fc-b\u001fg-b\u001f0\nE\u001fl-9\u001f2026-11-08\u001fbakery\u001f1250\u001fexpense\u001fc-b\u001fg-b\u001f\u001f\u001f\u001fs-2",
+  "expected_code": "358f-8303-f91b",
+  "name": "series and entry follow the unified account"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "pão\\de\u001fló\nção",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "pão\\de\u001fló\nção",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "code_a": "112f-11af-acb8",
+  "code_b": "112f-11af-acb8",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "pão\\de\u001fló\nção",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "recurrences": [],
+   "tombstones": []
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nE\u001fl-1\u001f2026-11-08\u001fpão\\\\de\\uló\\nção\u001f1250\u001fexpense\u001fc-nu\u001f\u001f\u001f\u001f\u001f",
+  "expected_code": "112f-11af-acb8",
+  "name": "description with separators and accents goes into the code the same way"
+ }
+]

@@ -7,17 +7,19 @@ dist/
 .venv/
 venv/
 
-# Ferramentas
+# Tools
 .pytest_cache/
 .ruff_cache/
 .coverage
 htmlcov/
 
-# Dados pessoais: nunca versionar bancos, backups ou exports
+# Personal data: never version databases, backups or exports
 *.sqlite
 *.sqlite3
 *.sqlite-*
 *.sqlite3-*
+*.mcv
+*.mcp
 *.db
 *.db-journal
 *.db-wal
@@ -26,7 +28,7 @@ backups/
 *.csv
 .env
 
-# Editores e sistema
+# Editors and system
 .vscode/
 .idea/
 .DS_Store

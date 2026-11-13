@@ -1,0 +1,674 @@
+[
+ {
+  "error": "this file is not a Kotsu export",
+  "file": [],
+  "name": "not an object"
+ },
+ {
+  "error": "this file is not a Kotsu export",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "other",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "another app"
+ },
+ {
+  "error": "this file is not a Kotsu export",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "no format"
+ },
+ {
+  "error": "file in format 3, newer than this Kotsu (format 2): update Kotsu on this device",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 3,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "newer format"
+ },
+ {
+  "error": "exchange file incomplete or damaged ('tombstones')",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": []
+  },
+  "name": "a section is missing"
+ },
+ {
+  "error": "invalid exchange file: amount of entry l-1",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 0,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "zero amount"
+ },
+ {
+  "error": "invalid exchange file: amount of entry l-1",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 12.5,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "amount with decimals"
+ },
+ {
+  "error": "invalid exchange file: kind of entry l-1",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "other",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "unknown kind"
+ },
+ {
+  "error": "invalid exchange file: date of entry l-1",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-02-30",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "impossible date"
+ },
+ {
+  "error": "invalid exchange file: unknown account in entry l-1",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-x",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "unknown account"
+ },
+ {
+  "error": "invalid exchange file: unknown category in entry l-1",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": "g-x",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "unknown category"
+ },
+ {
+  "error": "invalid exchange file: unknown series in entry l-1",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": "s-x",
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "unknown series"
+ },
+ {
+  "error": "invalid exchange file: duplicate entry l-1",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    },
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000011-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "duplicate entry"
+ },
+ {
+  "error": "invalid exchange file: stamp of entry l-1",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "yesterday",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "crooked stamp"
+ },
+ {
+  "error": "invalid exchange file: installment of entry l-1",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": {
+      "group": "p",
+      "number": 3,
+      "total": 2
+     },
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "installment beyond the total"
+ },
+ {
+  "error": "invalid exchange file: duplicate account (NUBANK)",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    },
+    {
+     "changed_at": "0000000000002-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "NUBANK",
+     "uid": "c-2"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "accounts with the same name"
+ },
+ {
+  "error": "exchange file incomplete or damaged ('date')",
+  "file": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "uid": "l-1"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "name": "entry without a field"
+ }
+]

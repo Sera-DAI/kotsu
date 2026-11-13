@@ -3,14 +3,14 @@ from pathlib import Path
 
 import pytest
 
-RAIZ = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(RAIZ / "ferramentas"))
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "tools"))
 
 
 @pytest.fixture
-def banco():
-    from money_cli.armazenamento.banco import Banco
+def db():
+    from kotsu.storage.database import Database
 
-    b = Banco.em_memoria()
-    yield b
-    b.fechar()
+    d = Database.in_memory()
+    yield d
+    d.close()
