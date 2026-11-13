@@ -1,0 +1,433 @@
+[
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 8990,
+   "category": "food",
+   "date": "2026-11-11",
+   "description": "groceries",
+   "has_date": false,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "89,90 groceries #food @nubank",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 8990,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "groceries",
+   "has_date": false,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "-89,90 groceries @nubank",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "itaú",
+   "amount": 350000,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "salary",
+   "has_date": false,
+   "installments": 1,
+   "kind": "income"
+  },
+  "line": "+3500 salary @itaú",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "itaú",
+   "amount": 350000,
+   "category": null,
+   "date": "2026-11-05",
+   "description": "salary",
+   "has_date": true,
+   "installments": 1,
+   "kind": "income"
+  },
+  "line": "+3.500,00 salary @itaú 05/11",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 12000,
+   "category": "home",
+   "date": "2026-11-11",
+   "description": "fridge",
+   "has_date": false,
+   "installments": 10,
+   "kind": "expense"
+  },
+  "line": "120 fridge #home @nubank 10x",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 12000,
+   "category": "home",
+   "date": "2027-01-31",
+   "description": "fridge",
+   "has_date": true,
+   "installments": 10,
+   "kind": "expense"
+  },
+  "line": "120 fridge #home @nubank 10X 31/01/2027",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 8990,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "groceries",
+   "has_date": false,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "89.90 groceries @nubank",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 123456,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "trip",
+   "has_date": false,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "1.234,56 trip @nubank",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 123400,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "trip",
+   "has_date": false,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "1.234 trip @nubank",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 123450,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "trip",
+   "has_date": false,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "1234,5 trip @nubank",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 1200,
+   "category": null,
+   "date": "2026-11-10",
+   "description": "breakfast coffee",
+   "has_date": true,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12 breakfast coffee @nubank yesterday",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 1200,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "coffee",
+   "has_date": true,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12 coffee @nubank today",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 1200,
+   "category": null,
+   "date": "2026-11-10",
+   "description": "coffee",
+   "has_date": true,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12 coffee @nubank ontem",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 1200,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "coffee",
+   "has_date": true,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12 coffee @nubank HOJE",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 1200,
+   "category": null,
+   "date": "2026-02-01",
+   "description": "coffee",
+   "has_date": true,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12 coffee @nubank 1/2",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 1200,
+   "category": null,
+   "date": "2025-10-15",
+   "description": "coffee",
+   "has_date": true,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12 coffee @nubank 15/10/25",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 1200,
+   "category": null,
+   "date": "2028-02-29",
+   "description": "coffee",
+   "has_date": true,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12 coffee @nubank 29/02/2028",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 1200,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "",
+   "has_date": false,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12 @nubank",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": null,
+   "amount": 1200,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "coffee",
+   "has_date": false,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12 coffee",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 1200,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "coffee with spaces",
+   "has_date": false,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12    coffee   with   spaces   @nubank",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 1200,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "pix 2x1",
+   "has_date": false,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12 pix 2x1 @nubank",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "nubank",
+   "amount": 1200,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "note 10/2026",
+   "has_date": false,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12 note 10/2026 @nubank",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "only one #category per entry",
+  "line": "12 a #b @c #d",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "only one @account per entry",
+  "line": "12 a @b @c",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "only one installment count (e.g. 10x)",
+  "line": "12 a @b 2x 3x",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "installments go from 2x to 120x",
+  "line": "12 a @b 1x",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "installments go from 2x to 120x",
+  "line": "12 a @b 121x",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "b",
+   "amount": 1200,
+   "category": null,
+   "date": "2026-11-11",
+   "description": "a",
+   "has_date": false,
+   "installments": 120,
+   "kind": "expense"
+  },
+  "line": "12 a @b 120x",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "only one date per entry",
+  "line": "12 a @b 01/01 02/01",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "impossible date: 31/02",
+  "line": "12 a @b 31/02",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "missing the category name after #",
+  "line": "12 a #",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "missing the account name after @",
+  "line": "12 a @",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "the amount must be greater than zero",
+  "line": "0 nothing @b",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "the amount must be greater than zero",
+  "line": "0,00 nothing @b",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "unreadable amount: abc (use 89,90 or 1.234,56)",
+  "line": "abc groceries @b",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "unreadable amount: 12,345 (use 89,90 or 1.234,56)",
+  "line": "12,345 groceries @b",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "unreadable amount: 1.23.456 (use 89,90 or 1.234,56)",
+  "line": "1.23.456 groceries @b",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "unreadable amount: 1,2,3 (use 89,90 or 1.234,56)",
+  "line": "1,2,3 groceries @b",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "unreadable amount: + (use 89,90 or 1.234,56)",
+  "line": "+ salary @b",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "type the amount first, e.g. 89,90 groceries @nubank",
+  "line": "",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "type the amount first, e.g. 89,90 groceries @nubank",
+  "line": "   ",
+  "today": "2026-11-11"
+ },
+ {
+  "error": "unreadable amount: R$12 (use 89,90 or 1.234,56)",
+  "line": "R$12 groceries @b",
+  "today": "2026-11-11"
+ },
+ {
+  "expected": {
+   "account": "NuBank",
+   "amount": 1200,
+   "category": "Alimentação",
+   "date": "2026-11-11",
+   "description": "GROCERIES",
+   "has_date": false,
+   "installments": 1,
+   "kind": "expense"
+  },
+  "line": "12 GROCERIES #Alimentação @NuBank",
+  "today": "2026-11-11"
+ }
+]
