@@ -177,7 +177,7 @@ Opening a new version upgrades older data on its own, without losing anything:
 - With the data on Google Drive, update **every** computer before opening Kotsu again, so an older version does not create a new `money.sqlite` next to the renamed one.
 - The old `money` command is gone: use `kotsu`. `pipx install --force kotsu-cli` (or `pipx upgrade kotsu-cli`) removes it.
 - The Portuguese flags (`--dados`, `--pasta-dados`, `--forcar`, `--exportar`, `--importar`, `--conferir`) and the `MONEY_CLI_DADOS` variable were removed: use the English flags and `KOTSU_DATA`.
-- Still on 0.1.0? Update to 0.1.1 first and open Kotsu once on each computer, then update again.
+- Coming from 0.1.0 works too: the database is upgraded on first open, with a backup copy kept next to it.
 
 ## VI. Under the hood
 
