@@ -192,3 +192,54 @@ def test_old_name_never_overwrites_the_new_database(local, tmp_path):
     paths.database_file(folder)
     assert (folder / "kotsu.sqlite").read_bytes() == b"new"
     assert (folder / f"{paths._OLD_PREFIX}.sqlite").read_bytes() == b"old"
+
+
+def _write_lock(folder, machine, beat):
+    import json
+
+    (folder / lock.LOCK_NAME).write_text(
+        json.dumps({"machine": machine, "pid": 123, "since": "earlier", "beat": beat}),
+        encoding="utf-8",
+    )
+
+
+def test_lock_from_a_computer_that_stopped_beating_is_taken_over(tmp_path):
+    import time
+
+    _write_lock(tmp_path, "NOTEBOOK", time.time() - lock.STALE_AFTER - 1)
+    mine = lock.acquire(tmp_path, "now")
+    assert mine.took_over == "NOTEBOOK"
+    mine.release()
+    assert not (tmp_path / lock.LOCK_NAME).exists()
+
+
+def test_recent_heartbeat_from_another_computer_blocks_and_shows_age(tmp_path):
+    import time
+
+    _write_lock(tmp_path, "NOTEBOOK", time.time() - 120)
+    with pytest.raises(lock.DatabaseInUse) as error:
+        lock.acquire(tmp_path, "now")
+    assert "NOTEBOOK" in str(error.value) and "2 min ago" in str(error.value)
+
+
+def test_old_lock_without_heartbeat_uses_file_age(tmp_path):
+    import os
+    import time
+
+    path = tmp_path / lock.LOCK_NAME
+    path.write_text('{"machine": "NOTEBOOK", "pid": 1, "since": "x"}', encoding="utf-8")
+    old = time.time() - lock.STALE_AFTER - 60
+    os.utime(path, (old, old))
+    lock.acquire(tmp_path, "now").release()
+
+
+def test_beat_refreshes_and_never_overwrites_a_takeover(tmp_path, monkeypatch):
+    import json
+
+    mine = lock.acquire(tmp_path, "now")
+    mine.content["beat"] = 0
+    mine.beat()
+    assert json.loads((tmp_path / lock.LOCK_NAME).read_text())["beat"] > 0
+    _write_lock(tmp_path, "NOTEBOOK", 1.0)  # forced takeover elsewhere
+    mine.beat()
+    assert json.loads((tmp_path / lock.LOCK_NAME).read_text())["machine"] == "NOTEBOOK"

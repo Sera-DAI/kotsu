@@ -82,12 +82,16 @@ def main(argv: list[str] | None = None) -> int:
     try:
         mine = lock.acquire(folder, f"{dt.datetime.now():%d/%m/%Y %H:%M}", args.force)
     except lock.DatabaseInUse as error:
+        mine = _ask_takeover(lock, folder, error)
+        if mine is None:
+            return 1
+    if mine.took_over:
         print(
-            f"{error}\nClose Kotsu there and wait for Drive to finish syncing. If it was\n"
-            "closed by force, use: kotsu --force",
+            f"Kotsu on {mine.took_over} stopped responding over "
+            f"{lock.STALE_AFTER // 60} min ago (computer shut down?): taking over.",
             file=sys.stderr,
         )
-        return 1
+    mine.start_heartbeat()
     try:
         database = Database.open(file, backups_folder(folder))
         try:
@@ -99,6 +103,28 @@ def main(argv: list[str] | None = None) -> int:
     finally:
         mine.release()
     return 0
+
+
+def _ask_takeover(lock, folder, error):
+    """Explains who holds the lock and, in a terminal, offers to take it over."""
+    print(error, file=sys.stderr)
+    if not error.same_machine:
+        print(
+            f"If that computer is off, this clears by itself {lock.STALE_AFTER // 60} min "
+            "after it stopped\n(once Drive syncs). Taking over while it is really open may "
+            "lose entries.",
+            file=sys.stderr,
+        )
+    if not sys.stdin.isatty():
+        print("To open anyway: kotsu --force", file=sys.stderr)
+        return None
+    try:
+        answer = input("Open anyway? [y/N] ").strip().lower()
+    except EOFError:
+        answer = ""
+    if answer not in ("y", "yes", "s", "sim"):
+        return None
+    return lock.acquire(folder, f"{dt.datetime.now():%d/%m/%Y %H:%M}", force=True)
 
 
 def _exchange(database, args: argparse.Namespace) -> int:
