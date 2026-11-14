@@ -1,4 +1,4 @@
-"""Domain types. Money is always in integer cents (BRL)."""
+"""Domain types. Amounts are always in integer cents (BRL)."""
 
 from __future__ import annotations
 

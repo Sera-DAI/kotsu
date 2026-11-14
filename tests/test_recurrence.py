@@ -101,7 +101,7 @@ def test_migration_0002_keeps_data(tmp_path):
     from kotsu.storage import migrations
     from kotsu.storage.database import migrate
 
-    path = tmp_path / "money.sqlite"
+    path = tmp_path / "kotsu.sqlite"
     connection = sqlite3.connect(path, isolation_level=None)
     migrate(connection, path, migrations.load()[:1])
     connection.execute("INSERT INTO conta (nome, cor) VALUES ('a', '#fff')")
@@ -115,7 +115,7 @@ def test_migration_0002_keeps_data(tmp_path):
     assert db.version >= 2
     assert db.list_categories()[0].recurring is False
     assert db.month_entries(Month(2026, 11))[0].recurrence_group is None
-    assert (tmp_path / "money.before-v2.sqlite").exists()
+    assert (tmp_path / "kotsu.before-v2.sqlite").exists()
     db.close()
 
 

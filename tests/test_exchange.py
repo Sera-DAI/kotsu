@@ -237,7 +237,7 @@ def test_stamp_never_goes_backwards():
 
 
 def test_migration_0003_gives_identity_to_existing_records(tmp_path):
-    path = tmp_path / "money.sqlite"
+    path = tmp_path / "kotsu.sqlite"
     connection = sqlite3.connect(path, isolation_level=None)
     migrate(connection, path, migrations.load()[:2])
     connection.execute("INSERT INTO conta (nome, cor) VALUES ('a', '#fff'), ('b', '#000')")
@@ -251,8 +251,8 @@ def test_migration_0003_gives_identity_to_existing_records(tmp_path):
 
     db = Database.open(path)
     assert db.version == len(migrations.load())
-    assert (tmp_path / "money.before-v3.sqlite").exists()
-    assert lock.conflicts(tmp_path, "money.sqlite") == []
+    assert (tmp_path / "kotsu.before-v3.sqlite").exists()
+    assert lock.conflicts(tmp_path, "kotsu.sqlite") == []
     state = merge.validate({"app": "kotsu", "format": merge.FORMAT, **exchange.read_state(db)})
     assert len({x["uid"] for x in state["entries"]}) == 3
     assert len({a["uid"] for a in state["accounts"]}) == 2
@@ -449,7 +449,7 @@ def test_series_edited_on_one_side_applies_to_months_the_other_will_still_genera
 
 def test_import_keeps_a_copy_first_and_a_bad_file_changes_nothing(tmp_path, phone):
     folder = tmp_path / "pc"
-    pc = Database.open(folder / "money.sqlite")
+    pc = Database.open(folder / "kotsu.sqlite")
     _add(pc, "bakery")
     before = exchange.read_state(pc)
 
@@ -465,9 +465,9 @@ def test_import_keeps_a_copy_first_and_a_bad_file_changes_nothing(tmp_path, phon
     _add(phone, "uber")
     summary = _exchange(phone, pc, tmp_path)
     assert summary.added == 1
-    copy = folder / "backups" / "money.before-import.sqlite"
+    copy = folder / "backups" / "kotsu.before-import.sqlite"
     assert copy.exists()
-    assert lock.conflicts(folder, "money.sqlite") == []  # the copy does not look like a conflict
+    assert lock.conflicts(folder, "kotsu.sqlite") == []  # the copy does not look like a conflict
     previous = Database.open(copy)
     assert _descriptions(previous) == ["bakery"]
     previous.close()
@@ -558,7 +558,7 @@ def test_compare_lists_what_is_missing_on_each_side(pc, phone, tmp_path):
 
 def test_export_import_verify_commands(tmp_path, capsys):
     pc, phone = tmp_path / "pc", tmp_path / "phone"
-    db = Database.open(pc / "money.sqlite")
+    db = Database.open(pc / "kotsu.sqlite")
     _add(db, "bakery")
     db.close()
     file = tmp_path / "pc.json"
@@ -575,10 +575,8 @@ def test_export_import_verify_commands(tmp_path, capsys):
     assert code in capsys.readouterr().out
     assert main(["--data", str(phone), "--verify", str(file)]) == 0
     assert "Equal" in capsys.readouterr().out
-    assert main(["--dados", str(phone), "--conferir", str(file)]) == 0  # old flags
-    assert "Equal" in capsys.readouterr().out
 
-    db = Database.open(phone / "money.sqlite")
+    db = Database.open(phone / "kotsu.sqlite")
     _add(db, "uber")
     db.close()
     assert main(["--data", str(phone), "--verify", str(file)]) == 2

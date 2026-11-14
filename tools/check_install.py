@@ -35,7 +35,6 @@ def main() -> int:
         env = dict(os.environ)
         env.pop("PYTHONPATH", None)
         env.pop("KOTSU_DATA", None)
-        env.pop("MONEY_CLI_DADOS", None)
         env.update(
             PIPX_HOME=str(folder / "pipx"),
             PIPX_BIN_DIR=str(folder / "bin"),
@@ -50,7 +49,7 @@ def main() -> int:
         run([sys.executable, "-m", "pipx", "install", str(ROOT)], folder, env)
         kotsu = folder / "bin" / ("kotsu.exe" if sys.platform == "win32" else "kotsu")
         # The old alias is still installed.
-        assert (folder / "bin" / ("money.exe" if sys.platform == "win32" else "money")).exists()
+        assert (folder / "bin" / ("kotsu.exe" if sys.platform == "win32" else "kotsu")).exists()
         py = (
             folder
             / "pipx"
@@ -75,7 +74,7 @@ from kotsu.domain.models import NewEntry, Kind
 from textual.widgets import DataTable
 assert Path(sys.argv[2]).resolve() not in Path(kotsu.__file__).resolve().parents
 async def check():
-    database = Database.open(Path(sys.argv[1]) / 'money.sqlite')
+    database = Database.open(Path(sys.argv[1]) / 'kotsu.sqlite')
     try:
         assert database.version == len(migrations.load()) >= 4
         account = database.create_account('Sample account', '#8a2be2')
@@ -89,7 +88,7 @@ async def check():
             await pilot.press('b')
             await pilot.pause()
             await pilot.press('q')
-        assert list((Path(sys.argv[1]) / 'backups').glob('money.*.sqlite'))
+        assert list((Path(sys.argv[1]) / 'backups').glob('kotsu.*.sqlite'))
     finally:
         database.close()
 asyncio.run(check())

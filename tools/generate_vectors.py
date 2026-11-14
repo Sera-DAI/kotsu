@@ -19,7 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
-from kotsu.domain import installments, merge, money, recurrence  # noqa: E402
+from kotsu.domain import currency, installments, merge, recurrence  # noqa: E402
 from kotsu.domain.line import LineError, parse  # noqa: E402
 from kotsu.domain.month import Month  # noqa: E402
 
@@ -98,7 +98,7 @@ def _lines() -> list[dict]:
     return cases
 
 
-# --- dates and money -------------------------------------------------------------
+# --- dates and amounts -------------------------------------------------------------
 
 
 def _dates() -> dict:
@@ -139,9 +139,9 @@ def _dates() -> dict:
     }
 
 
-def _money() -> list[dict]:
+def _currency() -> list[dict]:
     values = [0, 1, 9, 10, 99, 100, 1250, 99999, 100000, 123456, 100000000, 123456789012, -8990]
-    return [{"cents": v, "text": money.format_cents(v)} for v in values]
+    return [{"cents": v, "text": currency.format_cents(v)} for v in values]
 
 
 # --- stamps ----------------------------------------------------------------------
@@ -560,7 +560,7 @@ def generate() -> dict[str, object]:
     return {
         "line.json": _lines(),
         "dates.json": _dates(),
-        "money.json": _money(),
+        "currency.json": _currency(),
         "stamp.json": _stamps(),
         "merge.json": _merges(),
         "invalid.json": _invalid(),

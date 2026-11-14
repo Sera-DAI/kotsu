@@ -8,10 +8,12 @@ import sys
 import tomllib
 from pathlib import Path
 
-FILE_NAME = "money.sqlite"
+FILE_NAME = "kotsu.sqlite"
 CONFIG_NAME = "local.toml"
 ENV_VAR = "KOTSU_DATA"
-LEGACY_ENV_VAR = "MONEY_CLI_DADOS"
+# Names used before the product was called Kotsu. Only read to upgrade old installs.
+_OLD_FOLDER = "money-cli"
+_OLD_PREFIX = "money"
 
 
 def _base() -> Path:
@@ -24,11 +26,11 @@ def local_folder() -> Path:
     """This computer's own folder: %APPDATA%\\kotsu or ~/.local/share/kotsu.
 
     Never synced: holds `local.toml` (where the data is) and, when the data is in a synced
-    folder, the backups (D38). Older versions used a `money-cli` folder; it is renamed to
-    `kotsu` the first time it is needed.
+    folder, the backups (D38). A folder left by an old version is renamed to `kotsu` the
+    first time it is needed.
     """
     folder = _base() / "kotsu"
-    legacy = _base() / "money-cli"
+    legacy = _base() / _OLD_FOLDER
     if not folder.exists() and legacy.is_dir():
         try:
             legacy.rename(folder)
@@ -38,7 +40,7 @@ def local_folder() -> Path:
 
 
 def _env_folder() -> str | None:
-    return os.environ.get(ENV_VAR) or os.environ.get(LEGACY_ENV_VAR) or None
+    return os.environ.get(ENV_VAR) or None
 
 
 def configured_folder() -> Path | None:
@@ -86,4 +88,37 @@ def backups_folder(data: Path) -> Path | None:
 
 
 def database_file(folder: Path | None = None) -> Path:
-    return (folder or data_folder()) / FILE_NAME
+    folder = folder or data_folder()
+    upgrade_old_names(folder)
+    upgrade_old_names(local_folder() / "backups")
+    return folder / FILE_NAME
+
+
+def upgrade_old_names(folder: Path) -> list[Path]:
+    """Renames files left by old versions (`money.sqlite`, its copies and backups) to `kotsu.*`.
+
+    Runs on every open and does nothing once done. A file is never overwritten: when the new
+    name already exists, the old file stays where it is. Returns the renamed files.
+    """
+    renamed: list[Path] = []
+    for folder_ in (folder, folder / "backups"):
+        try:
+            items = sorted(folder_.iterdir())
+        except OSError:
+            continue
+        for old in items:
+            name = old.name
+            if not (old.is_file() and name.startswith(_OLD_PREFIX) and ".sqlite" in name):
+                continue
+            rest = name[len(_OLD_PREFIX) :]
+            if not rest.startswith((".", " ", "-")):
+                continue
+            new = old.with_name("kotsu" + rest)
+            if new.exists():
+                continue
+            try:
+                old.rename(new)
+            except OSError:
+                continue
+            renamed.append(new)
+    return renamed

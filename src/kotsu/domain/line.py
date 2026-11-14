@@ -14,7 +14,7 @@ import datetime as dt
 import re
 from dataclasses import dataclass
 
-from kotsu.domain import money
+from kotsu.domain import currency
 from kotsu.domain.models import Kind
 
 MAX_INSTALLMENTS = 120
@@ -174,7 +174,7 @@ def build(
     Without `date`, the line carries no date (it becomes today when saved). Never carries
     installments.
     """
-    parts = [("+" if kind is Kind.INCOME else "") + money.format_cents(amount)]
+    parts = [("+" if kind is Kind.INCOME else "") + currency.format_cents(amount)]
     if description:
         parts.append(description)
     if category:

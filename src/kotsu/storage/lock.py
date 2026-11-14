@@ -76,10 +76,10 @@ def acquire(folder: Path, since: str, force: bool = False) -> Lock:
 
 
 def conflicts(folder: Path, database_name: str) -> list[Path]:
-    """Copies of the database that Drive creates when it sees two edits (e.g. `money (1).sqlite`).
+    """Copies of the database that Drive creates when it sees two edits (e.g. `kotsu (1).sqlite`).
 
-    Ignores the database, backups and pre-migration copies (`money.before-v4.sqlite`, or
-    `money.antes-v2.sqlite` from older versions).
+    Ignores the database, backups and pre-migration copies (`kotsu.before-v4.sqlite`, or
+    `kotsu.antes-v2.sqlite` from older versions).
     """
     stem = Path(database_name).stem
     pattern = re.compile(re.escape(stem) + r".+\.sqlite", re.IGNORECASE)

@@ -25,7 +25,7 @@ import re
 from collections.abc import Iterable
 from dataclasses import dataclass, field
 
-from kotsu.domain import money
+from kotsu.domain import currency
 
 FORMAT = 2
 ZERO_STAMP = "0000000000000-0000-00000000"
@@ -498,7 +498,7 @@ def describe(entry: dict, state: dict) -> str:
     accounts, categories = _names(state, "accounts"), _names(state, "categories")
     day = dt.date.fromisoformat(entry["date"]).strftime("%d/%m/%Y")
     sign = "+" if entry["kind"] == "income" else "-"
-    parts = [day, f"{sign}{money.format_cents(entry['amount'])}"]
+    parts = [day, f"{sign}{currency.format_cents(entry['amount'])}"]
     if entry["description"]:
         parts.append(entry["description"])
     if entry["installment"]:

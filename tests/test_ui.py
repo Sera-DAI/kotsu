@@ -59,7 +59,7 @@ def test_real_process_starts_fast(tmp_path):
         "import time; t=time.perf_counter();"
         "from kotsu.ui.app import KotsuApp;"
         "from kotsu.storage.database import Database;"
-        f"d=Database.open(__import__('pathlib').Path(r'{tmp_path}')/'money.sqlite');"
+        f"d=Database.open(__import__('pathlib').Path(r'{tmp_path}')/'kotsu.sqlite');"
         "print(time.perf_counter()-t)"
     )
     out = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, check=True)
