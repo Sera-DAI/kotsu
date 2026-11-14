@@ -30,7 +30,6 @@ dev = ["pytest>=8", "pytest-asyncio>=0.24", "ruff>=0.6"]
 
 [project.scripts]
 kotsu = "kotsu.__main__:main"
-money = "kotsu.__main__:main"  # old alias
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/kotsu"]

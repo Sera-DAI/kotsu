@@ -17,7 +17,7 @@ def _expense(amount, account_id, day=8, **extra):
 
 
 def test_new_database_is_at_the_latest_version(tmp_path):
-    path = tmp_path / "data" / "money.sqlite"
+    path = tmp_path / "data" / "kotsu.sqlite"
     d = Database.open(path)
     assert d.version == len(migrations.load()) >= 1
     d.close()
@@ -28,7 +28,7 @@ def test_new_database_is_at_the_latest_version(tmp_path):
 
 
 def test_copy_before_migrating_a_database_with_data(tmp_path):
-    path = tmp_path / "money.sqlite"
+    path = tmp_path / "kotsu.sqlite"
     d = Database.open(path)
     d.insert_entries([_expense(8990, d.create_account("Nubank", "#8a2be2").id)])
     d.close()
@@ -39,7 +39,7 @@ def test_copy_before_migrating_a_database_with_data(tmp_path):
     assert migrate(connection, path, [*real, new]) == new.version
     connection.close()
 
-    copy = tmp_path / f"money.before-v{new.version}.sqlite"
+    copy = tmp_path / f"kotsu.before-v{new.version}.sqlite"
     assert copy.exists()
     old = sqlite3.connect(copy)
     assert schema_version(old) == len(real)
@@ -48,7 +48,7 @@ def test_copy_before_migrating_a_database_with_data(tmp_path):
 
 
 def test_failing_migration_leaves_no_trace(tmp_path):
-    path = tmp_path / "money.sqlite"
+    path = tmp_path / "kotsu.sqlite"
     Database.open(path).close()
     real = migrations.load()
     broken = migrations.Migration(
@@ -67,7 +67,7 @@ def test_failing_migration_leaves_no_trace(tmp_path):
 
 def test_migration_0004_translates_a_v3_database_without_losing_anything(tmp_path):
     """A database written by the Portuguese versions (schema 3) opens with English names."""
-    path = tmp_path / "money.sqlite"
+    path = tmp_path / "kotsu.sqlite"
     connection = sqlite3.connect(path, isolation_level=None)
     connection.execute("PRAGMA foreign_keys = ON")
     migrate(connection, path, migrations.load()[:3])
@@ -99,7 +99,7 @@ def test_migration_0004_translates_a_v3_database_without_losing_anything(tmp_pat
     d = Database.open(path)
     try:
         assert d.version == len(migrations.load())
-        assert (tmp_path / "money.before-v4.sqlite").exists()
+        assert (tmp_path / "kotsu.before-v4.sqlite").exists()
         assert d.replica == replica
         assert [(a.name, a.color) for a in d.list_accounts()] == [("Itaú", "#ff7a00")]
         assert [(c.name, c.recurring) for c in d.list_categories()] == [("aluguel", True)]
@@ -128,7 +128,7 @@ def test_migration_0004_translates_a_v3_database_without_losing_anything(tmp_pat
 
 
 def test_database_newer_than_the_app_refuses_to_open(tmp_path):
-    path = tmp_path / "money.sqlite"
+    path = tmp_path / "kotsu.sqlite"
     connection = sqlite3.connect(path)
     connection.execute("PRAGMA user_version = 999")
     connection.close()

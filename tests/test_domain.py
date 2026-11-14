@@ -2,7 +2,7 @@ import datetime as dt
 
 import pytest
 
-from kotsu.domain import money
+from kotsu.domain import currency
 from kotsu.domain.models import Entry, Installment, Kind, NewEntry
 from kotsu.domain.month import Month
 from kotsu.domain.totals import MonthTotals
@@ -20,7 +20,7 @@ from kotsu.domain.totals import MonthTotals
     ],
 )
 def test_format_without_sign(cents, text):
-    assert money.format_cents(cents) == text
+    assert currency.format_cents(cents) == text
 
 
 def test_month_rolls_over_the_year():

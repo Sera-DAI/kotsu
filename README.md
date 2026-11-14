@@ -21,7 +21,7 @@
 
 # Kotsu
 
-**Kotsu** (コツコツ, *kotsukotsu*) is a Japanese word for "little by little, steadily". It is a terminal app for everyday money: income, expenses and the month's installments on a single screen, in a pink and salmon **Cotton Candy** look. No giant spreadsheet, no dashboard full of charts. You jot an entry on one line, see the whole month and get on with your day.
+**Kotsu** (コツコツ, *kotsukotsu*) is a Japanese word for "little by little, steadily". It is a terminal app for everyday finances: income, expenses and the month's installments on a single screen, in a pink and salmon **Cotton Candy** look. No giant spreadsheet, no dashboard full of charts. You jot an entry on one line, see the whole month and get on with your day.
 
 It runs on Windows Terminal and Linux, works offline and keeps everything in a SQLite file on your computer. No account, no cloud, no telemetry, no ads.
 
@@ -160,24 +160,24 @@ When you create a category, Kotsu asks whether it repeats every month (or press 
       <ul>
         <li><b>Where it lives:</b> <code>%APPDATA%\kotsu</code> on Windows and <code>~/.local/share/kotsu</code> on Linux (or the folder in the <code>KOTSU_DATA</code> variable). <code>kotsu --data FOLDER</code> opens another folder.</li>
         <li><b>A synced folder (two computers):</b> <code>kotsu --data-folder "G:\My Drive\Kotsu"</code> makes that folder this computer's data folder (it copies the database there the first time). Backups then go to the local folder, outside the sync. While Kotsu is open, a <code>kotsu.lock</code> file tells the other computer it is in use. If a computer shuts down with Kotsu open, its lock stops being refreshed and the other computer takes over by itself after 5 minutes; before that, Kotsu asks whether to open anyway (<code>kotsu --force</code> skips the question). <code>kotsu --default-data-folder</code> goes back to the local folder.</li>
-        <li><b>Manual backup:</b> the <code>b</code> key creates <code>backups/money.YYYY-MM-DD-HHMMSS.sqlite</code> and keeps the 5 most recent copies. Kotsu never backs up on its own.</li>
-        <li><b>Merging with another device:</b> <code>kotsu --export data.json</code> writes everything to a file; on the other device, <code>kotsu --import data.json</code> merges it with what is there (the most recent change to each entry wins, and deleted entries stay deleted). Do it both ways and check: <code>kotsu --verify</code> shows a short code that is the same on both when the data is the same; <code>kotsu --verify data.json</code> lists the differences. Before importing, Kotsu saves <code>backups/money.before-import.sqlite</code>.</li>
+        <li><b>Manual backup:</b> the <code>b</code> key creates <code>backups/kotsu.YYYY-MM-DD-HHMMSS.sqlite</code> and keeps the 5 most recent copies. Kotsu never backs up on its own.</li>
+        <li><b>Merging with another device:</b> <code>kotsu --export data.json</code> writes everything to a file; on the other device, <code>kotsu --import data.json</code> merges it with what is there (the most recent change to each entry wins, and deleted entries stay deleted). Do it both ways and check: <code>kotsu --verify</code> shows a short code that is the same on both when the data is the same; <code>kotsu --verify data.json</code> lists the differences. Before importing, Kotsu saves <code>backups/kotsu.before-import.sqlite</code>.</li>
         <li><b>No password or encryption:</b> protect your computer and the folder as you would any personal file.</li>
-        <li><b>Restore:</b> close the app, move the current <code>money.sqlite</code> elsewhere, copy the chosen backup to <code>money.sqlite</code>, open the app and check the totals.</li>
+        <li><b>Restore:</b> close the app, move the current <code>kotsu.sqlite</code> elsewhere, copy the chosen backup to <code>kotsu.sqlite</code>, open the app and check the totals.</li>
       </ul>
     </td>
   </tr>
 </table>
 
-## V. Updating from a Portuguese version
+## V. Updating from an older version
 
-Versions before November 2026 had Portuguese names. Updating keeps everything working:
+Opening a new version upgrades older data on its own, without losing anything:
 
-- The database is migrated on first open (schema 4: English table and column names). A copy is kept first as `money.before-v4.sqlite` next to the database.
-- `tema.toml` becomes `theme.toml`, the local folder `money-cli` becomes `kotsu`, and the old `MONEY_CLI_DADOS` variable still works.
-- The old flags (`--dados`, `--pasta-dados`, `--forcar`, `--exportar`, `--importar`, `--conferir`) still work, hidden from `--help`.
-- Exchange files from older versions import normally. Update **both** devices before comparing check codes: the code changed with the English names, so an old and a new version never show the same code.
-- The lock file is now `kotsu.lock`; a `kotsu.trava` from a computer not updated yet is still respected.
+- Files from the time Kotsu was called Money CLI (`money.sqlite`, its `money.before-*` copies and the backups) are renamed to `kotsu.*` the first time Kotsu opens. A file is never overwritten: if a `kotsu.sqlite` already exists, the old file is left where it is.
+- With the data on Google Drive, update **every** computer before opening Kotsu again, so an older version does not create a new `money.sqlite` next to the renamed one.
+- The old `money` command is gone: use `kotsu`. `pipx install --force kotsu-cli` (or `pipx upgrade kotsu-cli`) removes it.
+- The Portuguese flags (`--dados`, `--pasta-dados`, `--forcar`, `--exportar`, `--importar`, `--conferir`) and the `MONEY_CLI_DADOS` variable were removed: use the English flags and `KOTSU_DATA`.
+- Still on 0.1.0? Update to 0.1.1 first and open Kotsu once on each computer, then update again.
 
 ## VI. Under the hood
 
@@ -192,12 +192,12 @@ Versions before November 2026 had Portuguese names. Updating keeps everything wo
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#41274f", "primaryTextColor": "#ffe9f4", "primaryBorderColor": "#ff7fb8", "lineColor": "#ffa28c", "secondaryColor": "#291b33", "tertiaryColor": "#1d1424", "fontFamily": "Segoe UI, sans-serif"}}}%%
 flowchart LR
     T["ui/<br>Textual: display only"] --> A["storage/<br>SQLite, migrations, backup"]
-    T --> D["domain/<br>money in cents,<br>installments, quick line"]
+    T --> D["domain/<br>amounts in cents,<br>installments, quick line"]
     A --> D
-    A --> F[("money.sqlite<br>on your computer")]
+    A --> F[("kotsu.sqlite<br>on your computer")]
 ```
 
-- Money is an integer number of cents, never a `float`; the sign comes from the kind (income or expense).
+- An amount is an integer number of cents, never a `float`; the sign comes from the kind (income or expense).
 - Every write is a transaction: all or nothing. Changed the schema? A numbered migration, with a copy of the database made first.
 - Totals are never stored: SQL computes them per month.
 

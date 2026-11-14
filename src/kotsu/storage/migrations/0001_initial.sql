@@ -1,6 +1,6 @@
 -- 0001: initial v1 schema.
 -- Table and column names are in Portuguese here; migration 0004 renames them to English.
--- Money in positive integer cents; the sign comes from `tipo` (kind).
+-- Amounts in positive integer cents; the sign comes from `tipo` (kind).
 -- ISO calendar dates (YYYY-MM-DD), no time zone. Totals are never stored.
 -- Every entry has an account (D21); the category is optional.
 

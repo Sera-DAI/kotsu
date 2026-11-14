@@ -51,18 +51,6 @@ def _parser() -> argparse.ArgumentParser:
         metavar="FILE",
         help="shows the check code; with FILE, the differences from it, and exits",
     )
-    hidden = argparse.SUPPRESS
-    parser.add_argument("--dados", dest="data", type=Path, help=hidden)
-    parser.add_argument("--pasta-dados", dest="data_folder", type=Path, help=hidden)
-    parser.add_argument(
-        "--pasta-dados-padrao", dest="default_data_folder", action="store_true", help=hidden
-    )
-    parser.add_argument("--forcar", dest="force", action="store_true", help=hidden)
-    exchange.add_argument("--exportar", dest="export", type=Path, help=hidden)
-    exchange.add_argument("--importar", dest="import_file", type=Path, help=hidden)
-    exchange.add_argument(
-        "--conferir", dest="verify", type=Path, nargs="?", const=True, help=hidden
-    )
     parser.add_argument("--version", action="version", version=f"kotsu {__version__}")
     return parser
 
@@ -86,7 +74,7 @@ def main(argv: list[str] | None = None) -> int:
         print(
             "Drive kept conflicted copies of the database (two computers saved at the same\n"
             f"time):\n{listing}\n"
-            "Check which one has the right entries, keep only that one as money.sqlite and\n"
+            "Check which one has the right entries, keep only that one as kotsu.sqlite and\n"
             "move the others out of the folder. To open anyway: kotsu --force",
             file=sys.stderr,
         )

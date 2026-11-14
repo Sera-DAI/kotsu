@@ -32,7 +32,7 @@ Financial rules (totals, installments, quick-line parser) live in `domain/`; the
 
 ## Data rules
 
-- Money is an `int` in cents, always positive; the sign comes from `kind` (income/expense).
+- An amount is an `int` in cents, always positive; the sign comes from `kind` (income/expense).
   Never `float`.
 - Every entry has an account (D21): the domain and the database refuse an entry without one.
   The category is optional.
@@ -40,7 +40,7 @@ Financial rules (totals, installments, quick-line parser) live in `domain/`; the
 - Totals (income, expenses, balance) are never stored: SQL computes them per month.
 - Month queries use the range `date >= start AND date < end` so the index is used.
   Lists are paginated (`limit`, `offset`).
-- On screen, a negative amount shows only in red, without a sign (`domain.money.format_cents`).
+- On screen, a negative amount shows only in red, without a sign (`domain.currency.format_cents`).
 - Amounts are typed and shown in the Brazilian format (`1.234,56`) and dates as `dd/mm/yyyy`;
   everything else (code, UI text, docs) is in English.
 
@@ -50,7 +50,7 @@ Financial rules (totals, installments, quick-line parser) live in `domain/`; the
   purchase go in a single transaction.
 - Schema changed? Create `src/kotsu/storage/migrations/NNNN_name.sql` with the next number.
   Never edit a published migration. Before migrating an existing database, the app copies the
-  file to `money.before-vN.sqlite`.
+  file to `kotsu.before-vN.sqlite`.
 - Test every new migration with a database at the previous version.
 - Migrations 0001 to 0003 still use the original Portuguese table names; 0004 renames
   everything to English (and `receita`/`despesa` to `income`/`expense`).
@@ -79,20 +79,16 @@ Financial rules (totals, installments, quick-line parser) live in `domain/`; the
   `FORMAT` if old files stop working. Format 1 files (Portuguese keys) are translated by
   `merge.upgrade_v1`.
 - `vectors/*.json` are the cases shared with the Android app. Changed a domain rule
-  (quick line, dates, money, stamp, merge)? Add the case in `tools/generate_vectors.py`, run
+  (quick line, dates, currency, stamp, merge)? Add the case in `tools/generate_vectors.py`, run
   it and review the JSON diff. The test fails if the files are out of date.
 
-## Compatibility with the Portuguese versions
+## Compatibility with older versions
 
-Installed copies from before the English rename keep working after updating:
-
-- Old flags (`--dados`, `--pasta-dados`, `--pasta-dados-padrao`, `--forcar`, `--exportar`,
-  `--importar`, `--conferir`) are still accepted, hidden from `--help`.
-- `MONEY_CLI_DADOS` still works next to `KOTSU_DATA`; the `money` command still exists.
-- The local folder `money-cli` is renamed to `kotsu`; `pasta_dados` in `local.toml` is read.
-- `tema.toml` is read and replaced by `theme.toml`; old theme names map to the new ones.
-- `kotsu.trava` from a computer not updated yet still blocks; the new lock is `kotsu.lock`.
-- Dialog keys from before (`s`, `t`, `p`) still work next to the English ones.
+- Files named `money.*` (database, copies, backups) are renamed to `kotsu.*` by
+  `storage.paths.upgrade_old_names`, never overwriting. The old `money-cli` local folder is
+  renamed to `kotsu`. These two are the only places that know the old name.
+- `pasta_dados` in `local.toml`, `tema.toml` and `kotsu.trava` are still read.
+- Removed: the `money` command, the Portuguese flags and `MONEY_CLI_DADOS`.
 
 ## How to work
 

@@ -53,7 +53,7 @@ async def test_switching_months_with_50_thousand_entries(tmp_path):
     - that plus redrawing the screen (`pause`): the median stays under the limit. Only the
       median, because the test pilot's pause alone sometimes goes over 100 ms.
     """
-    db = _sample_database(tmp_path / "money.sqlite")
+    db = _sample_database(tmp_path / "kotsu.sqlite")
     try:
         app = KotsuApp(db, today=TODAY)
         results = {}

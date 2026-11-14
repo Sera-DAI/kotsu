@@ -14,7 +14,7 @@ from textual.binding import Binding
 from textual.widgets import DataTable, Footer, Input, Static
 from textual.widgets.data_table import RowDoesNotExist
 
-from kotsu.domain import installments, money
+from kotsu.domain import currency, installments
 from kotsu.domain.filter import NO_FILTER, Filter, parse_filter
 from kotsu.domain.line import LineError, ParsedLine, build, parse
 from kotsu.domain.models import Account, Category, Entry, Kind, NewEntry, Scope
@@ -227,11 +227,11 @@ class KotsuApp(App[None]):
             (f"   {count} entr{'y' if count == 1 else 'ies'}", colors.NEUTRAL),
             ("\n", ""),
             ("♡ income ", theme.secondary),
-            (money.format_cents(totals.income), f"bold {colors.INCOME}"),
+            (currency.format_cents(totals.income), f"bold {colors.INCOME}"),
             ("   ✧ expenses ", theme.secondary),
-            (money.format_cents(totals.expenses), f"bold {colors.EXPENSE}"),
+            (currency.format_cents(totals.expenses), f"bold {colors.EXPENSE}"),
             ("   ☆ balance ", theme.secondary),
-            (money.format_cents(totals.balance), f"bold {colors.of_balance(totals.balance)}"),
+            (currency.format_cents(totals.balance), f"bold {colors.of_balance(totals.balance)}"),
         )
         if self.filter.active:  # second line of the top, so the first does not wrap
             top.append("\nfilter: ", style=colors.NEUTRAL)
@@ -263,9 +263,9 @@ class KotsuApp(App[None]):
                 text.append("   " + theme.bar_full * full, style=account.color)
                 text.append(theme.bar_empty * (10 - full), style=colors.NEUTRAL)
                 text.append("   income ")
-                text.append(money.format_cents(t.income).rjust(12), style=colors.INCOME)
+                text.append(currency.format_cents(t.income).rjust(12), style=colors.INCOME)
                 text.append("   expenses ")
-                text.append(money.format_cents(t.expenses).rjust(12), style=colors.EXPENSE)
+                text.append(currency.format_cents(t.expenses).rjust(12), style=colors.EXPENSE)
             lines.append(text)
         return Text("\n").join(lines)
 
@@ -285,7 +285,7 @@ class KotsuApp(App[None]):
                 self._categories.get(item.category_id, ""),
                 Text(account.name, style=account.color) if account else "",
                 Text(
-                    money.format_cents(item.amount),
+                    currency.format_cents(item.amount),
                     style=colors.of_balance(item.signed_amount),
                     justify="right",
                 ),
@@ -741,10 +741,10 @@ def _many(item: Entry, scope: Scope) -> bool:
 
 def _amount(line: ParsedLine) -> str:
     if line.installments == 1:
-        return money.format_cents(line.amount)
+        return currency.format_cents(line.amount)
     return (
-        f"{line.installments}x of {money.format_cents(line.amount)}"
-        f" = {money.format_cents(line.total)}"
+        f"{line.installments}x of {currency.format_cents(line.amount)}"
+        f" = {currency.format_cents(line.total)}"
     )
 
 

@@ -57,7 +57,7 @@ def _number(name: str, base: str) -> int:
 def _prune(folder: Path, stem: str) -> None:
     """Only after publishing: keeps the `KEEP` most recent.
 
-    Only looks at copies named by this module (`money.YYYY-MM-DD-HHMMSS[-N].sqlite`);
+    Only looks at copies named by this module (`kotsu.YYYY-MM-DD-HHMMSS[-N].sqlite`);
     pre-migration copies, backups in other formats and other files are never touched.
     """
     pattern = re.compile(re.escape(stem) + r"\.(\d{4}-\d{2}-\d{2}-\d{6})(?:-(\d+))?\.sqlite")
