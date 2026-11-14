@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "kotsu-cli"
-version = "0.1.0"
+version = "0.1.1"
 description = "Cozy personal finance in your terminal: income, expenses and installments of the month on one screen."
 readme = "README.md"
 requires-python = ">=3.11"
