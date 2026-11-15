@@ -478,6 +478,25 @@ MERGE_CASES: list[tuple[str, dict, dict]] = [
         ),
     ),
     (
+        "deleted account takes its older entries and series along",
+        state(
+            accounts=[NU, account("c-inter", "inter", _c(1))],
+            categories=[RENT],
+            recurrences=[series("s-1", _c(10))],
+            entries=[entry("l-1", _c(10)), entry("l-2", _c(10), account="c-inter")],
+        ),
+        state(
+            accounts=[account("c-inter", "inter", _c(1))],
+            entries=[entry("l-2", _c(10), account="c-inter")],
+            tombstones=[tombstone("c-nu", _c(50, B)), tombstone("l-1", _c(50, B))],
+        ),
+    ),
+    (
+        "deleted account stays while a newer entry uses it",
+        state(accounts=[NU], entries=[entry("l-1", _c(10)), entry("l-3", _c(60))]),
+        state(tombstones=[tombstone("c-nu", _c(50, B)), tombstone("l-1", _c(50, B))]),
+    ),
+    (
         "description with separators and accents goes into the code the same way",
         state(accounts=[NU], entries=[entry("l-1", _c(10), description="pão\\de\x1fló\nção")]),
         state(accounts=[NU], entries=[entry("l-1", _c(10), description="pão\\de\x1fló\nção")]),

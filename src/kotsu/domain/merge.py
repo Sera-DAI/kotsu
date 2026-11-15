@@ -9,6 +9,8 @@ Rules (the same in the Android app; the cases in `vectors/` apply to both):
 - Each record has `changed_at`, a `milliseconds-counter-replica` stamp that compares as
   text. For the same `uid`, the larger stamp wins, with the whole record.
 - A deleted entry leaves a tombstone. It beats the entry if it is newer than it.
+- A deleted account leaves a tombstone too (D44): newer than the account, it removes the
+  account and its entries and series older than it; anything newer keeps the account.
 - Accounts and categories with the same name (case-insensitive) become one: the smallest
   `uid` stays, with the newest content.
 - Series: the newest template wins; `generated_until` is always the larger of the two.
@@ -359,6 +361,26 @@ def merge(a: dict, b: dict) -> dict:
             "category": None if category is None else category_map[category],
         }
 
+    tombstones: dict[str, str] = {}
+    for tombstone in (*a["tombstones"], *b["tombstones"]):
+        uid = tombstone["uid"]
+        tombstones[uid] = max(tombstones.get(uid, ""), tombstone["deleted_at"])
+
+    # A deleted account (D44): its tombstone, if newer than the account, takes along every
+    # entry and series of it that is older than the tombstone.
+    account_gone: dict[str, str] = {}
+    for old, new in account_map.items():
+        if old in tombstones:
+            account_gone[new] = max(account_gone.get(new, ""), tombstones[old])
+    account_gone = {
+        x["uid"]: account_gone[x["uid"]]
+        for x in accounts
+        if account_gone.get(x["uid"], "") > x["changed_at"]
+    }
+
+    def survives(item: dict) -> bool:
+        return account_gone.get(item["account"], "") < item["changed_at"]
+
     series: dict[str, dict] = {}
     for serie in (*a["recurrences"], *b["recurrences"]):
         serie = repoint(serie)
@@ -371,11 +393,6 @@ def merge(a: dict, b: dict) -> dict:
         )
         series[serie["group"]] = {**winner, "generated_until": generated}
 
-    tombstones: dict[str, str] = {}
-    for tombstone in (*a["tombstones"], *b["tombstones"]):
-        uid = tombstone["uid"]
-        tombstones[uid] = max(tombstones.get(uid, ""), tombstone["deleted_at"])
-
     entries: dict[str, dict] = {}
     for entry in (*a["entries"], *b["entries"]):
         entry = repoint(entry)
@@ -384,12 +401,19 @@ def merge(a: dict, b: dict) -> dict:
             entry,
             lambda x: _entry_line(x) + _text(x["generated"]),
         )
-    alive = [x for x in entries.values() if tombstones.get(x["uid"], "") < x["changed_at"]]
+    alive = [
+        x
+        for x in entries.values()
+        if tombstones.get(x["uid"], "") < x["changed_at"] and survives(x)
+    ]
+    kept_series = [x for x in series.values() if survives(x)]
+    used = {x["account"] for x in (*alive, *kept_series)}
+    accounts = [x for x in accounts if x["uid"] not in account_gone or x["uid"] in used]
 
     return {
         "accounts": accounts,
         "categories": categories,
-        "recurrences": sorted(series.values(), key=lambda x: x["group"]),
+        "recurrences": sorted(kept_series, key=lambda x: x["group"]),
         "entries": sorted(alive, key=lambda x: x["uid"]),
         "tombstones": [{"uid": uid, "deleted_at": tombstones[uid]} for uid in sorted(tombstones)],
     }
