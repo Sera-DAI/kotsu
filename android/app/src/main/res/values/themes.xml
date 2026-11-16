@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Kotsu" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">#1d1424</item>
+        <item name="android:statusBarColor">#1d1424</item>
+        <item name="android:navigationBarColor">#41274f</item>
+    </style>
+</resources>

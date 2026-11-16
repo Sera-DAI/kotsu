@@ -33,3 +33,7 @@ backups/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Android release key: never commit
+*.jks
+*.keystore
