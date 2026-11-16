@@ -106,6 +106,18 @@ pipx install kotsu-cli
 
 Reopen the terminal and run `kotsu`. To update: `pipx upgrade kotsu-cli` (or run the installer again). To remove: `pipx uninstall kotsu-cli` (your data stays in the data folder).
 
+### Android app (preview)
+
+There is also a Kotsu app for Android, with the same rules and the same check code. Download `kotsu-X.Y.Z.apk` from the [Releases](https://github.com/Sera-DAI/kotsu/releases) page. The phone keeps its own data and joins the PC's through the exchange file: ⋯ → export on one side, `kotsu --import FILE` on the other (and the other way round with `kotsu --export FILE`), then compare ⋯ → check code with `kotsu --verify`.
+
+**About the "unverified developer" warning.** Kotsu is a free personal project and is distributed **without a Google developer account** (no Play Store, no paid verification). Under Google's developer verification rules (required in Brazil and other countries from 2026), Android may warn about or block an APK from an **unverified developer**. This is expected and does not mean the app is harmful:
+
+- Download the APK only from this repository's Releases. Every version is signed with the same key, so updates install over the previous one and keep your data. Check a download with `apksigner verify --print-certs kotsu-X.Y.Z.apk`; the certificate SHA-256 must be
+  `32:49:20:73:D5:E4:E9:A7:9B:98:C7:3C:A1:7F:CC:46:4A:C8:B1:0C:8F:C3:4B:32:8A:A8:3B:3F:22:06:FC:E6`.
+- The app asks for **no permissions**, has no network access, ads or tracking. Your data stays in the app's private folder and leaves it only when you export the exchange file.
+- To install, allow your browser or file manager to install unknown apps and accept the warnings. If the normal install is blocked, use Android's advanced flow for unverified apps (extra confirmation steps) or install from a computer with `adb install kotsu-X.Y.Z.apk`.
+- Why this way: the full developer account requires identity verification and a fee that a free hobby project does not justify for now. If the app is shared more widely it will move to a verified account; the package (`io.github.seradai.kotsu`) and the key stay the same, so updates keep working.
+
 ## III. Use
 
 ```text
