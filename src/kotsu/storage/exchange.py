@@ -251,6 +251,22 @@ def _apply(c: sqlite3.Connection, new: dict) -> None:
         [(x["uid"], x["deleted_at"]) for x in new["tombstones"]],
     )
 
+    # A deleted account (D44) leaves with its series; its entries already left above.
+    groups = {x["group"] for x in new["recurrences"]}
+    c.executemany(
+        "DELETE FROM recurrence WHERE group_id = ?",
+        [
+            (g,)
+            for (g,) in c.execute("SELECT group_id FROM recurrence").fetchall()
+            if g not in groups
+        ],
+    )
+    kept = {x["uid"] for x in new["accounts"]}
+    c.executemany(
+        "DELETE FROM account WHERE uid = ?",
+        [(u,) for (u,) in c.execute("SELECT uid FROM account").fetchall() if u not in kept],
+    )
+
 
 def _apply_named(
     c: sqlite3.Connection, table: str, items: list[dict], fields: tuple[str, ...]

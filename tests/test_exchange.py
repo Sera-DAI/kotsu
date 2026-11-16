@@ -608,3 +608,22 @@ async def test_key_v_shows_the_check_code(db):
         await pilot.pause()
         notices = [notice.message for notice in app._notifications]
     assert notices == [f"Check code: {exchange.check_code(db)}"]
+
+
+def test_account_deleted_on_the_phone_leaves_the_pc_with_its_entries(pc, tmp_path):
+    _add(pc, "bakery", category="home")
+    _add(pc, "groceries", account="itaú")
+    file = tmp_path / "exchange.json"
+    exchange.export(pc, file)
+    data = json.loads(file.read_text(encoding="utf-8"))
+    nubank = next(a["uid"] for a in data["accounts"] if a["name"] == "nubank")
+    gone = [nubank] + [e["uid"] for e in data["entries"] if e["account"] == nubank]
+    later = "9999999999999-0000-ffffffff"
+    data["accounts"] = [a for a in data["accounts"] if a["uid"] != nubank]
+    data["entries"] = [e for e in data["entries"] if e["account"] != nubank]
+    data["tombstones"] += [{"uid": u, "deleted_at": later} for u in gone]
+    file.write_text(json.dumps(data), encoding="utf-8")
+    exchange.import_file(pc, file)
+    assert [a.name for a in pc.list_accounts()] == ["itaú"]
+    assert _descriptions(pc) == ["groceries"]
+    assert exchange.check_code(pc) == merge.check_code(data)

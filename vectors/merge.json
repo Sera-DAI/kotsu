@@ -1858,6 +1858,270 @@
      "color": "#ff85bd",
      "name": "nubank",
      "uid": "c-nu"
+    },
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "inter",
+     "uid": "c-inter"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    },
+    {
+     "account": "c-inter",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-2"
+    }
+   ],
+   "format": 2,
+   "recurrences": [
+    {
+     "account": "c-nu",
+     "amount": 100000,
+     "category": "g-rent",
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "day": 5,
+     "description": "rent",
+     "ended": false,
+     "generated_until": "2026-11-01",
+     "group": "s-1",
+     "kind": "expense"
+    }
+   ],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "inter",
+     "uid": "c-inter"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-inter",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-2"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000050-0000-bbbbbbbb",
+     "uid": "c-nu"
+    },
+    {
+     "deleted_at": "0000000000050-0000-bbbbbbbb",
+     "uid": "l-1"
+    }
+   ]
+  },
+  "code_a": "836c-b0f9-a4aa",
+  "code_b": "0e39-abcf-b3f6",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "inter",
+     "uid": "c-inter"
+    }
+   ],
+   "categories": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "name": "rent",
+     "recurring": true,
+     "uid": "g-rent"
+    }
+   ],
+   "entries": [
+    {
+     "account": "c-inter",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-2"
+    }
+   ],
+   "recurrences": [],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000050-0000-bbbbbbbb",
+     "uid": "c-nu"
+    },
+    {
+     "deleted_at": "0000000000050-0000-bbbbbbbb",
+     "uid": "l-1"
+    }
+   ]
+  },
+  "expected_canonical_form": "A\u001fc-inter\u001finter\u001f#ff85bd\nC\u001fg-rent\u001frent\u001f1\nE\u001fl-2\u001f2026-11-08\u001fbakery\u001f1250\u001fexpense\u001fc-inter\u001f\u001f\u001f\u001f\u001f\nT\u001fc-nu\nT\u001fl-1",
+  "expected_code": "c4d6-0328-0073",
+  "name": "deleted account takes its older entries and series along"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000010-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-1"
+    },
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000060-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-3"
+    }
+   ],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": []
+  },
+  "b": {
+   "accounts": [],
+   "app": "kotsu",
+   "categories": [],
+   "entries": [],
+   "format": 2,
+   "recurrences": [],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000050-0000-bbbbbbbb",
+     "uid": "c-nu"
+    },
+    {
+     "deleted_at": "0000000000050-0000-bbbbbbbb",
+     "uid": "l-1"
+    }
+   ]
+  },
+  "code_a": "88ad-01da-573d",
+  "code_b": "c84e-f391-7792",
+  "expected": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
+    }
+   ],
+   "categories": [],
+   "entries": [
+    {
+     "account": "c-nu",
+     "amount": 1250,
+     "category": null,
+     "changed_at": "0000000000060-0000-aaaaaaaa",
+     "date": "2026-11-08",
+     "description": "bakery",
+     "generated": false,
+     "installment": null,
+     "kind": "expense",
+     "recurrence": null,
+     "uid": "l-3"
+    }
+   ],
+   "recurrences": [],
+   "tombstones": [
+    {
+     "deleted_at": "0000000000050-0000-bbbbbbbb",
+     "uid": "c-nu"
+    },
+    {
+     "deleted_at": "0000000000050-0000-bbbbbbbb",
+     "uid": "l-1"
+    }
+   ]
+  },
+  "expected_canonical_form": "A\u001fc-nu\u001fnubank\u001f#ff85bd\nE\u001fl-3\u001f2026-11-08\u001fbakery\u001f1250\u001fexpense\u001fc-nu\u001f\u001f\u001f\u001f\u001f\nT\u001fc-nu\nT\u001fl-1",
+  "expected_code": "bbb6-3ce4-a8b8",
+  "name": "deleted account stays while a newer entry uses it"
+ },
+ {
+  "a": {
+   "accounts": [
+    {
+     "changed_at": "0000000000001-0000-aaaaaaaa",
+     "color": "#ff85bd",
+     "name": "nubank",
+     "uid": "c-nu"
     }
    ],
    "app": "kotsu",
