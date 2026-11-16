@@ -1,6 +1,7 @@
 name: publish
 
-# Publishes to PyPI when a v* tag (e.g. v0.1.0) is pushed. Uses Trusted Publishing: no token.
+# Publishes to PyPI when a v* tag (e.g. v0.1.0) is pushed. Android releases use
+# android-vX.Y.Z tags, which do not match. Uses Trusted Publishing: no token.
 on:
   push:
     tags: ["v*"]

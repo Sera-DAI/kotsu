@@ -1,0 +1,47 @@
+name: android
+
+on:
+  workflow_dispatch:
+  push:
+    paths: ["android/**", "vectors/**", ".github/workflows/android.yml"]
+  pull_request:
+    paths: ["android/**", "vectors/**", ".github/workflows/android.yml"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.11.1"
+      - name: Core tests (shared vectors)
+        run: gradle -p android :core:test
+      - name: Build test APK
+        run: gradle -p android :app:assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kotsu-android-debug
+          path: android/app/build/outputs/apk/debug/*.apk
+      - name: Render screenshots
+        run: gradle -p android :app:testDebugUnitTest -Proborazzi.test.record=true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kotsu-android-screenshots
+          path: android/app/build/screenshots/*.png
+      - name: Save screenshots to the branch (pushes only)
+        if: github.event_name == 'push' && github.ref != 'refs/heads/main'
+        run: |
+          mkdir -p docs/images/android
+          cp android/app/build/screenshots/*.png docs/images/android/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/images/android
+          git diff --cached --quiet || (git commit -m "Update Android screenshots" && git push)
