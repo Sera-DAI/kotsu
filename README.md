@@ -235,6 +235,8 @@ python tools/check.py --quick      # lint + fast tests
 python tools/check.py              # everything, same as CI
 ```
 
+Before a PR, read [AGENTS.md](AGENTS.md) ("Verification and review") and [REVIEW.md](REVIEW.md). In Claude Code, a push or a new PR is blocked until a full `tools/check.py` passes on the committed HEAD.
+
 ## VIII. License
 
 <table>

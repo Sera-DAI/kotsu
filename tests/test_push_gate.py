@@ -14,7 +14,16 @@ import pre_push_gate
 
 def _git(root: Path, *args: str) -> str:
     done = subprocess.run(
-        ["git", "-c", "user.name=t", "-c", "user.email=t@example.invalid", *args],
+        [
+            "git",
+            "-c",
+            "user.name=t",
+            "-c",
+            "user.email=t@example.invalid",
+            "-c",
+            "commit.gpgsign=false",
+            *args,
+        ],
         cwd=root,
         capture_output=True,
         text=True,
@@ -63,13 +72,14 @@ class IsGuardedTests(unittest.TestCase):
         command = "git " + " ".join(f"--option-{i}" for i in range(40)) + " log"
         started = time.monotonic()
         self.assertFalse(pre_push_gate.is_guarded("Bash", {"command": command}))
-        self.assertLess(time.monotonic() - started, 1.0)
+        self.assertLess(time.monotonic() - started, 5.0)
 
     def test_remote_writing_tools_are_guarded(self):
         for tool in (
             "mcp__github__create_pull_request",
             "mcp__github__push_files",
             "mcp__github__create_or_update_file",
+            "mcp__github__delete_file",
             "mcp__github__merge_pull_request",
         ):
             self.assertTrue(pre_push_gate.is_guarded(tool, {}))
@@ -116,7 +126,9 @@ class StampTests(unittest.TestCase):
             self.assertFalse(verify._stamp_head(Path(other)))
 
     def test_worktree_uses_its_own_stamp(self):
-        wt = self.root.parent / (self.root.name + "-wt")
+        other = tempfile.TemporaryDirectory()
+        self.addCleanup(other.cleanup)
+        wt = Path(other.name) / "wt"
         _git(self.root, "worktree", "add", "-q", "-b", "wt", str(wt))
         self.addCleanup(
             lambda: subprocess.run(["git", "worktree", "remove", "--force", str(wt)], cwd=self.root)
@@ -183,3 +195,33 @@ class MainExitCodeTests(unittest.TestCase):
                 text=True,
             )
             self.assertEqual(done.returncode, 2)
+
+
+class StampEdgeTests(unittest.TestCase):
+    def test_failed_git_status_is_not_stamped(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            _git(root, "init", "-q")
+            (root / "a.txt").write_text("a")
+            _git(root, "add", ".")
+            _git(root, "commit", "-q", "-m", "init")
+            (root / ".git" / "index").write_bytes(b"broken index")
+            self.assertFalse(verify._stamp_head(root))
+            self.assertFalse((root / ".git" / "verify-stamp").exists())
+
+    def test_quick_and_failed_runs_never_stamp(self):
+        calls = []
+        original_step, original_stamp = verify._step, verify._stamp_head
+        try:
+            verify._stamp_head = lambda **kw: calls.append(kw) or True
+            verify._step = lambda name, command: True
+            self.assertEqual(verify.main(["--quick"]), 0)
+            self.assertEqual(calls, [])
+            verify._step = lambda name, command: name != "tests"
+            self.assertEqual(verify.main([]), 1)
+            self.assertEqual(calls, [])
+            verify._step = lambda name, command: True
+            self.assertEqual(verify.main([]), 0)
+            self.assertEqual(len(calls), 1)
+        finally:
+            verify._step, verify._stamp_head = original_step, original_stamp

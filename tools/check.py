@@ -30,9 +30,9 @@ def _step(name: str, command: list[str]) -> bool:
 def _stamp_head(root: Path = ROOT, expected_head: str = "") -> bool:
     """Records that the full check passed on the current, committed HEAD (read by the push gate)."""
 
-    def git(*args: str) -> str:
+    def git(*args: str) -> str | None:
         done = subprocess.run(["git", *args], cwd=root, capture_output=True, text=True)
-        return done.stdout.strip() if done.returncode == 0 else ""
+        return done.stdout.strip() if done.returncode == 0 else None
 
     head = git("rev-parse", "HEAD")
     stamp = git("rev-parse", "--git-path", "verify-stamp")
@@ -41,7 +41,11 @@ def _stamp_head(root: Path = ROOT, expected_head: str = "") -> bool:
     if expected_head and head != expected_head:
         print("not stamped: HEAD moved while the checks were running")
         return False
-    if git("status", "--porcelain"):
+    status = git("status", "--porcelain")
+    if status is None:
+        print("not stamped: git status failed")
+        return False
+    if status:
         print("not stamped: the working tree has uncommitted changes")
         return False
     (root / stamp).write_text(head)

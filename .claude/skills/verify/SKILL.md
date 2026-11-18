@@ -10,9 +10,12 @@ description: Run Kotsu's full check and an end-to-end smoke test with temporary 
    the log of each round.
 2. Smoke test with a temporary folder, never the real data folder:
    - `kotsu --data <tmp> --export <tmp>/a.json` on an empty database, then
-     `kotsu --data <tmp> --verify <tmp>/a.json` and `kotsu --data <tmp> --import <tmp>/a.json`.
-   - The TUI flows (add an entry with the quick line, installments, filter, backup `b`,
-     theme `t`) are covered by the Textual pilot tests in `tests/test_ui.py`.
+     `kotsu --data <tmp> --verify`, `kotsu --data <tmp> --verify <tmp>/a.json` and
+     `kotsu --data <tmp> --import <tmp>/a.json`.
+   - The Textual pilot tests in `tests/test_ui.py` open the app, switch months and start the
+     real process. The other TUI flows (quick line, installments, filter, backup `b`, theme
+     `t`) have no pilot test yet: open `kotsu --data <tmp>` and try them by hand, or report
+     them as a **limitation**.
 3. Run the smoke test 3 times in a row to prove it is stable.
 4. Detect the system (`sys.platform`). Android (`gradle -p android :core:test`) needs a JDK 17
    and Gradle; where they are missing, report the step as **skipped**.

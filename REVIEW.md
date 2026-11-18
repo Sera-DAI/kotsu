@@ -14,8 +14,7 @@ parallel, each as a separate agent, and their result goes in the PR description.
 ## What to check
 - Secrets, tokens, account IDs, real names, real addresses or local paths in code, tests, docs
   or logs. Real financial data never enters the repository.
-- Any change to `.github/`, `.claude/`, `tools/check.py`, `tools/layers.py`,
-  `tools/pre_push_gate.py`, `CODEOWNERS`, `REVIEW.md` or `AGENTS.md`: always a finding to justify.
+- Any change to a file listed in `.github/CODEOWNERS`: always a finding to justify.
 - Workflows: minimal `permissions`, Actions pinned by commit SHA, no `pull_request_target`.
 - Tests: no `skip`, `xfail`, retry-until-pass or sleep; new code has an error case; the test
   count did not drop (deleting a test needs the maintainer's approval).

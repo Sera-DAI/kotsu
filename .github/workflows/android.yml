@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
         with:
           distribution: temurin
@@ -36,6 +38,7 @@ jobs:
         with:
           name: kotsu-android-screenshots
           path: android/app/build/screenshots/*.png
+          if-no-files-found: error
 
   # Only this job can write, and it never runs for pull requests.
   save-screenshots:

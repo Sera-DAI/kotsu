@@ -116,8 +116,9 @@ Financial rules (totals, installments, quick-line parser) live in `domain/`; the
   log of each round.
 - Never skip a test, retry it until it passes, or add a sleep to an unstable test. Without a
   root cause, delete the test and document why (the maintainer approves the deletion).
-- Never change check files (CI workflows, `tools/check.py`, `tools/layers.py`,
-  `tools/pre_push_gate.py`, `REVIEW.md`, `CODEOWNERS`, `.claude/`) to make something pass.
+- Never change check files (everything listed in `.github/CODEOWNERS`: CI workflows, Dependabot,
+  `tools/check.py`, `tools/layers.py`, `tools/pre_push_gate.py`, `.gitattributes`, `.gitignore`,
+  `REVIEW.md`, `AGENTS.md`, `.claude/`) to make something pass.
   Such changes go in their own PR, approved by the maintainer.
 - Workflows: `permissions: contents: read` at the top, write only in the job that needs it;
   Actions pinned by commit SHA (Dependabot updates them); never `pull_request_target`.
