@@ -27,6 +27,11 @@ htmlcov/
 backups/
 *.csv
 .env
+*.env
+.env.*
+*.key
+*.pem
+*.p12
 
 # Editors and system
 .vscode/

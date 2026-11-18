@@ -104,3 +104,26 @@ Financial rules (totals, installments, quick-line parser) live in `domain/`; the
 - Real install tests via pipx run outside the checkout on Windows/Linux CI; they need the
   network only to install. Unit tests stay offline.
 - Commits with the GitHub noreply e-mail, fully in English.
+
+## Verification and review
+
+- Before every commit run `python tools/check.py --quick`; before opening a PR run
+  `python tools/check.py` (full) and the `verify` skill (`.claude/skills/verify/`).
+- The full check stamps HEAD when it passes on a clean, committed tree. In Claude Code, the
+  hook `tools/pre_push_gate.py` (`.claude/settings.json`) blocks `git push` and PR creation
+  without that stamp. CI and `CODEOWNERS` are the real backstop.
+- If a check fails 3 rounds in a row, stop and call the maintainer with what was tried and the
+  log of each round.
+- Never skip a test, retry it until it passes, or add a sleep to an unstable test. Without a
+  root cause, delete the test and document why (the maintainer approves the deletion).
+- Never change check files (CI workflows, `tools/check.py`, `tools/layers.py`,
+  `tools/pre_push_gate.py`, `REVIEW.md`, `CODEOWNERS`, `.claude/`) to make something pass.
+  Such changes go in their own PR, approved by the maintainer.
+- Workflows: `permissions: contents: read` at the top, write only in the job that needs it;
+  Actions pinned by commit SHA (Dependabot updates them); never `pull_request_target`.
+- If something cannot be verified in this environment, say explicitly what was left out.
+  Never count it as success.
+- Before every PR, three read-only reviewers (security, tests, docs) review the diff in
+  parallel, following `REVIEW.md`. Findings are labeled Important, Nit or Pre-existing;
+  Important ones block. Their result goes in the PR description.
+- Check scripts are in Python (Windows and Linux), never only bash or only PowerShell.
