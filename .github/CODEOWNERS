@@ -1,0 +1,12 @@
+# Check files, rules and review settings need the maintainer's review.
+# Branch rule on main: required status check + code owner review, maintainer can bypass.
+/.github/            @Sera-DAI
+/.claude/            @Sera-DAI
+/tools/check.py      @Sera-DAI
+/tools/layers.py     @Sera-DAI
+/tools/pre_push_gate.py @Sera-DAI
+/.gitattributes      @Sera-DAI
+/.gitignore          @Sera-DAI
+/REVIEW.md           @Sera-DAI
+/AGENTS.md           @Sera-DAI
+/.github/dependabot.yml @Sera-DAI

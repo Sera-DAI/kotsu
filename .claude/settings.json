@@ -1,0 +1,13 @@
+{
+  "hooks": {
+    "Stop": [
+      { "hooks": [ { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/tools/check.py\" --quick" } ] }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|mcp__github__(create_pull_request|push_files|create_or_update_file|delete_file|merge_pull_request)",
+        "hooks": [ { "type": "command", "command": "python \"$CLAUDE_PROJECT_DIR/tools/pre_push_gate.py\"" } ]
+      }
+    ]
+  }
+}

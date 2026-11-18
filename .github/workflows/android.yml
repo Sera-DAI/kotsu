@@ -8,39 +8,53 @@ on:
     paths: ["android/**", "vectors/**", ".github/workflows/android.yml"]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
         with:
           distribution: temurin
           java-version: "17"
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@ed408507eac070d1f99cc633dbcf757c94c7933a # v4
         with:
           gradle-version: "8.11.1"
       - name: Core tests (shared vectors)
         run: gradle -p android :core:test
       - name: Build test APK
         run: gradle -p android :app:assembleDebug
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: kotsu-android-debug
           path: android/app/build/outputs/apk/debug/*.apk
       - name: Render screenshots
         run: gradle -p android :app:testDebugUnitTest -Proborazzi.test.record=true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: kotsu-android-screenshots
           path: android/app/build/screenshots/*.png
-      - name: Save screenshots to the branch (pushes only)
-        if: github.event_name == 'push' && github.ref != 'refs/heads/main'
+          if-no-files-found: error
+
+  # Only this job can write, and it never runs for pull requests.
+  save-screenshots:
+    needs: build
+    if: github.event_name == 'push' && github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: kotsu-android-screenshots
+          path: docs/images/android
+      - name: Commit and push the screenshots
         run: |
-          mkdir -p docs/images/android
-          cp android/app/build/screenshots/*.png docs/images/android/
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add docs/images/android
