@@ -7,9 +7,9 @@ kotlin { jvmToolchain(17) }
 
 dependencies {
     // Android ships org.json; the JVM tests bring their own copy.
-    compileOnly("org.json:json:20240303")
+    compileOnly("org.json:json:20260814")
     testImplementation(kotlin("test"))
-    testImplementation("org.json:json:20240303")
+    testImplementation("org.json:json:20260814")
 }
 
 tasks.test {
